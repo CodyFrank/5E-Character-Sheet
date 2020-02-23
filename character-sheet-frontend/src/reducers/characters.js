@@ -1,4 +1,6 @@
-function charactersReducer(state=[], action){
+import { ADD_CHARACTER, DELETE_CHARACTER } from '../actionTypes'
+
+export function charactersReducer(state=[], action){
     switch(action.type){
         case ADD_CHARACTER:
             return [ ...state, action.payload ]
