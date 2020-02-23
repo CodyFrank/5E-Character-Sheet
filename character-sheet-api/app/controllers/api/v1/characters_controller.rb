@@ -30,4 +30,12 @@ class Api::V1::CharactersController < ApplicationController
         end
     end
 
+    def destroy
+        if character = Character.find_by(id: params[:id]).destroy
+            render json: {characterId: character.id}
+        else
+            render json: {message: "Deleting that Character Failed"}
+        end
+    end
+
 end
