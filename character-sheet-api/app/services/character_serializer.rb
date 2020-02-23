@@ -1,4 +1,5 @@
 class CharacterSerializer
+    
     def initialize(character_object)
         @character = character_object
     end
