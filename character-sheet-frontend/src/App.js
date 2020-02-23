@@ -1,5 +1,4 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 import { 
   BrowserRouter as Router,
@@ -7,6 +6,7 @@ import {
   Switch,
   Link
  } from 'react-router-dom'
+ import CharactersContainer from './containers/CharactersContainer.js'
 
 function App() {
   return (
