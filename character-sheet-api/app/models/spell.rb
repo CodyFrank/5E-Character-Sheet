@@ -1,3 +1,3 @@
 class Spell < ApplicationRecord
-    belongs_too :character
+    belongs_to :character
 end
