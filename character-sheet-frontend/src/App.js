@@ -6,7 +6,11 @@ import {
   Switch,
   Link
  } from 'react-router-dom'
- import CharactersContainer from './containers/CharactersContainer.js'
+ import CharactersContainer from './containers/CharactersContainer'
+ import Home from './components/Home'
+
+
+
 
 function App() {
   return (
@@ -16,7 +20,7 @@ function App() {
           <CharactersContainer/>
         </Route>
         <Route path="/">
-          
+          <Home/>
         </Route>
         
       </div>
