@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_23_014259) do
+ActiveRecord::Schema.define(version: 2020_02_23_012036) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 2020_02_23_014259) do
     t.string "name"
     t.string "attack_bonus"
     t.string "damage"
-    t.string "type"
+    t.string "damage_type"
     t.integer "character_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -80,7 +80,7 @@ ActiveRecord::Schema.define(version: 2020_02_23_014259) do
     t.integer "hit_point_maximum"
     t.integer "current_hit_points"
     t.integer "temporary_hit_points"
-    t.integer "hit_dice"
+    t.string "hit_dice"
     t.integer "sucessful_death_saves"
     t.integer "failed_death_saves"
     t.integer "cp"
@@ -94,7 +94,7 @@ ActiveRecord::Schema.define(version: 2020_02_23_014259) do
     t.text "flaws"
     t.text "features_and_traits"
     t.integer "age"
-    t.integer "height"
+    t.string "height"
     t.integer "weight"
     t.string "eyes"
     t.string "skin"
@@ -105,8 +105,6 @@ ActiveRecord::Schema.define(version: 2020_02_23_014259) do
     t.string "spellcasting_ability"
     t.integer "spell_save_dc"
     t.integer "spell_attack_bonus"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
     t.integer "level_one_spell_slots"
     t.integer "level_two_spell_slots"
     t.integer "level_three_spell_slots"
@@ -125,6 +123,8 @@ ActiveRecord::Schema.define(version: 2020_02_23_014259) do
     t.integer "level_seven_used_spell_slots"
     t.integer "level_eight_used_spell_slots"
     t.integer "level_nine_used_spell_slots"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "equipment", force: :cascade do |t|

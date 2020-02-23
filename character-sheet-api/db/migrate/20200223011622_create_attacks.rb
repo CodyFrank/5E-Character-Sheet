@@ -4,7 +4,7 @@ class CreateAttacks < ActiveRecord::Migration[6.0]
       t.string :name
       t.string :attack_bonus
       t.string :damage
-      t.string :type
+      t.string :damage_type
       t.integer :character_id
 
       t.timestamps

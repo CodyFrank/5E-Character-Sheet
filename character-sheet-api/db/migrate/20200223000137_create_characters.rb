@@ -55,7 +55,7 @@ class CreateCharacters < ActiveRecord::Migration[6.0]
       t.integer :hit_point_maximum
       t.integer :current_hit_points
       t.integer :temporary_hit_points
-      t.integer :hit_dice
+      t.string :hit_dice
       t.integer :sucessful_death_saves
       t.integer :failed_death_saves
       t.integer :cp
@@ -69,7 +69,7 @@ class CreateCharacters < ActiveRecord::Migration[6.0]
       t.text :flaws
       t.text :features_and_traits
       t.integer :age
-      t.integer :height
+      t.string :height
       t.integer :weight
       t.string :eyes
       t.string :skin
@@ -80,6 +80,24 @@ class CreateCharacters < ActiveRecord::Migration[6.0]
       t.string :spellcasting_ability
       t.integer :spell_save_dc
       t.integer :spell_attack_bonus
+      t.integer :level_one_spell_slots
+      t.integer :level_two_spell_slots
+      t.integer :level_three_spell_slots
+      t.integer :level_four_spell_slots
+      t.integer :level_five_spell_slots
+      t.integer :level_six_spell_slots
+      t.integer :level_seven_spell_slots
+      t.integer :level_eight_spell_slots
+      t.integer :level_nine_spell_slots
+      t.integer :level_one_used_spell_slots
+      t.integer :level_two_used_spell_slots
+      t.integer :level_three_used_spell_slots
+      t.integer :level_four_used_spell_slots
+      t.integer :level_five_used_spell_slots
+      t.integer :level_six_used_spell_slots
+      t.integer :level_seven_used_spell_slots
+      t.integer :level_eight_used_spell_slots
+      t.integer :level_nine_used_spell_slots
 
       t.timestamps
     end
