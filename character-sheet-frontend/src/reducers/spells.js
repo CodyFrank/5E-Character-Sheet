@@ -6,7 +6,7 @@ export function spellsReducer(state=[], action){
         case ADD_SPELL:
             return [ ...state, action.payload ]
         case DELETE_SPELL:
-            return state.filter(c => c.id !== action.payload.id)
+            return state.filter(s => s.id !== action.payload.id)
         default:
             return state
     }
