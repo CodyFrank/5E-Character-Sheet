@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_23_000137) do
+ActiveRecord::Schema.define(version: 2020_02_23_010425) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -95,6 +95,14 @@ ActiveRecord::Schema.define(version: 2020_02_23_000137) do
     t.string "spellcasting_ability"
     t.integer "spell_save_dc"
     t.integer "spell_attack_bonus"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "equipment", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.integer "character_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
