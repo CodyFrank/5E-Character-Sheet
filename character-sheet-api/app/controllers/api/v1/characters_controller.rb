@@ -20,4 +20,14 @@ class Api::V1::CharactersController < ApplicationController
             render json: {message: "Creating that Character Failed"}
         end
     end
+
+    def update
+        character = Character.find_by(id: params[:id])
+        if character.update(character_params)
+            render json: CharacterSerializer.new(character).to_serialized_json
+        else
+            render json: {message: "Updating that Character Failed"}
+        end
+    end
+
 end
