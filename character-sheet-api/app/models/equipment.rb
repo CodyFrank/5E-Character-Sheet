@@ -1,3 +1,3 @@
 class Equipment < ApplicationRecord
-    belongs_to :character
+    belongs_too :character
 end
