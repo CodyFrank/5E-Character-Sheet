@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_23_012036) do
+ActiveRecord::Schema.define(version: 2020_02_23_014259) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -107,6 +107,24 @@ ActiveRecord::Schema.define(version: 2020_02_23_012036) do
     t.integer "spell_attack_bonus"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "level_one_spell_slots"
+    t.integer "level_two_spell_slots"
+    t.integer "level_three_spell_slots"
+    t.integer "level_four_spell_slots"
+    t.integer "level_five_spell_slots"
+    t.integer "level_six_spell_slots"
+    t.integer "level_seven_spell_slots"
+    t.integer "level_eight_spell_slots"
+    t.integer "level_nine_spell_slots"
+    t.integer "level_one_used_spell_slots"
+    t.integer "level_two_used_spell_slots"
+    t.integer "level_three_used_spell_slots"
+    t.integer "level_four_used_spell_slots"
+    t.integer "level_five_used_spell_slots"
+    t.integer "level_six_used_spell_slots"
+    t.integer "level_seven_used_spell_slots"
+    t.integer "level_eight_used_spell_slots"
+    t.integer "level_nine_used_spell_slots"
   end
 
   create_table "equipment", force: :cascade do |t|
