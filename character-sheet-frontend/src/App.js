@@ -22,7 +22,7 @@ function App() {
 
           <Route path="/characters/new">
             <NewCharactersForm/>
-          </Route>
+          </Route> 
 
           <Route path="/characters">
             <CharactersContainer/>
