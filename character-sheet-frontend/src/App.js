@@ -8,8 +8,9 @@ import {
  } from 'react-router-dom'
  import CharactersContainer from './containers/CharactersContainer'
  import Home from './components/Home'
- import NewCharacterForm from './components/NewCharacter'
+ import NewCharacter from './components/NewCharacter'
  import NewAttack from './components/NewAttack'
+ import NewSpell from './components/NewSpell'
 
 
 
@@ -23,6 +24,10 @@ function App() {
 
         <Route path="/attack/new">
             <NewAttack/>
+          </Route> 
+
+          <Route path="/spell/new">
+            <NewSpell/>
           </Route> 
 
           <Route path="/character/new">
