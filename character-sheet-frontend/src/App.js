@@ -11,6 +11,7 @@ import {
  import NewCharacter from './components/NewCharacter'
  import NewAttack from './components/NewAttack'
  import NewSpell from './components/NewSpell'
+ import NewEquipment from './components/NewEquipment'
 
 
 
@@ -28,6 +29,10 @@ function App() {
 
           <Route path="/spell/new">
             <NewSpell/>
+          </Route> 
+
+          <Route path="/equipment/new">
+            <NewEquipment/>
           </Route> 
 
           <Route path="/character/new">
