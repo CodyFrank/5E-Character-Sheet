@@ -1,15 +1,16 @@
 import React from 'react'
+import CharacterCard from '../components/CharacterCard.js'
 
 export default class CharactersContainer extends React.Component{
 
-    renderCharacters = (characters) => {
+    renderCharacterCards = (characters) => {
         characters.map(c => <CharacterCard character={c} />)
     }
 
     render(){
         return(
             <div>
-                {renderCharacters()}
+                {renderCharacterCards()}
             </div>
         )
     }
