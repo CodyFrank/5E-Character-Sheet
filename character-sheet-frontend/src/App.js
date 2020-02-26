@@ -8,7 +8,8 @@ import {
  } from 'react-router-dom'
  import CharactersContainer from './containers/CharactersContainer'
  import Home from './components/Home'
- import NewCharactersForm from './components/NewCharactersForm'
+ import NewCharacterForm from './components/NewCharacter'
+ import NewAttack from './components/NewAttack'
 
 
 
@@ -20,8 +21,12 @@ function App() {
 
         <Switch>
 
-          <Route path="/characters/new">
-            <NewCharactersForm/>
+        <Route path="/attack/new">
+            <NewAttack/>
+          </Route> 
+
+          <Route path="/character/new">
+            <NewCharacter/>
           </Route> 
 
           <Route path="/characters">
