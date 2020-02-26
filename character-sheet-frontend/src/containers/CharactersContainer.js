@@ -1,10 +1,15 @@
 import React from 'react'
 
 export default class CharactersContainer extends React.Component{
+
+    renderCharacters = (characters) => {
+        characters.map(c => <CharacterCard character={c} />)
+    }
+
     render(){
         return(
             <div>
-                <h1>map characters then render components here</h1>
+                {renderCharacters()}
             </div>
         )
     }
