@@ -1,12 +1,26 @@
-import { ADD_SPELL, DELETE_SPELL } from '../actionTypes'
+import { ADD_SPELL, DELETE_SPELL, REQUESTING_SPELL_CHANGE } from '../actionTypes'
 
 
-export function spellsReducer(state=[], action){
+export function spellsReducer(state={ spells: [], requesting: false }, action){
     switch(action.type){
+        case REQUESTING_SPELL_CHANGE:
+            return {
+                ...state,
+                spells: [...state.spells],
+                requesting: true
+            }
         case ADD_SPELL:
-            return [ ...state, action.payload ]
+            return {
+                ...state,
+                spells: [ ...state.spells, action.payload ],
+                requesting: false
+            }
         case DELETE_SPELL:
-            return state.filter(s => s.id !== action.payload.id)
+            return {
+                ...state,
+                spells: state.spells.filter(s => s.id !== action.payload.id),
+                requesting: false
+            }
         default:
             return state
     }
