@@ -1,26 +1,12 @@
-import { ADD_ATTACK, DELETE_ATTACK, REQUESTING_ATTACK_CHANGE } from '../actionTypes'
+import { ADD_ATTACK, DELETE_ATTACK } from '../actionTypes'
 
 
-export function attacksReducer(state={ attacks: [], requesting: false }, action){
+export function attacksReducer(state=[], action){
     switch(action.type){
-        case REQUESTING_ATTACK_CHANGE:
-            return {
-                ...state, 
-                attacks: [...state.attacks],
-                requesting: true
-            }
         case ADD_ATTACK:
-            return {
-                ...state, 
-                attacks: [ ...state.attacks, action.payload ],
-                requesting: false
-            }
+            return [ ...state.attacks, action.payload ]
         case DELETE_ATTACK:
-            return {
-                ...state, 
-                attacks: state.attacks.filter(a => a.id !== action.payload.id),
-                requesting: false
-            }
+            return state.filter(a => a.id !== action.payload.id)
         default:
             return state
     }
