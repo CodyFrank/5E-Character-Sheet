@@ -1,4 +1,4 @@
-import { ADD_CHARACTER, DELETE_CHARACTER, REQUESTING_CHARACTER_CHANGE } from '../actionTypes'
+import { ADD_CHARACTER, DELETE_CHARACTER } from '../actionTypes'
 
 export function charactersReducer(state=[], action){
     switch(action.type){
