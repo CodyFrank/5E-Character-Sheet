@@ -12,7 +12,7 @@ export function attacksReducer(state={ attacks: [], requesting: false }, action)
         case ADD_ATTACK:
             return {
                 ...state, 
-                attacks: [ ...state, action.payload ],
+                attacks: [ ...state.attacks, action.payload ],
                 requesting: false
             }
         case DELETE_ATTACK:
