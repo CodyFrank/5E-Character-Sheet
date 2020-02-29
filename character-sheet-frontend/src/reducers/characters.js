@@ -1,19 +1,15 @@
 import { ADD_CHARACTER, DELETE_CHARACTER, REQUESTING_CHARACTER_CHANGE } from '../actionTypes'
 
-export function charactersReducer(state={ characters:[], requesting: false }, action){
+export function charactersReducer(state=[], action){
     switch(action.type){
-        case REQUESTING_CHARACTER_CHANGE:
-            return {
-                ...state, 
-                characters: [...state.characters],
-                requesting: true
-            }
+        // case REQUESTING_CHARACTER_CHANGE:
+        //     return {
+        //         ...state, 
+        //         characters: [...state.characters],
+        //         requesting: true
+        //     }
         case ADD_CHARACTER:
-            return {
-                ...state,
-                characters: [ ...state.characters, action.payload ],
-                requesting: true
-            }
+            return [ ...state, action.payload ]
         case DELETE_CHARACTER:
             return {
                 ...state,
