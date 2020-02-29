@@ -1,25 +1,11 @@
-import { ADD_EQUIPMENT, DELETE_EQUIPMENT, REQUESTING_EQUIPMENT_CHANGE } from '../actionTypes'
+import { ADD_EQUIPMENT, DELETE_EQUIPMENT } from '../actionTypes'
 
-export function equipmentReducer(state={ equipment: [], requesting: false }, action){
+export function equipmentReducer(state=[], action){
     switch(action.type){
-        case REQUESTING_EQUIPMENT_CHANGE:
-            return {
-                ...state,
-                equipment: [...state.equpiment],
-                requesting: true
-            }
         case ADD_EQUIPMENT:
-            return {
-                ...state,
-                equpiment: [ ...state.equipment, action.payload ],
-                requesting: false
-            }
+            return [ ...state, action.payload ]
         case DELETE_EQUIPMENT:
-            return {
-                ...state,
-                equipment: state.equipment.filter(e => e.id !== action.payload.id),
-                requesting: false
-            }
+            return state.filter(e => e.id !== action.payload.id)
         default:
             return state
     }
