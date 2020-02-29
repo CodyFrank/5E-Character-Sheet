@@ -13,9 +13,3 @@ const rootReducer = combineReducers({
 
 export default rootReducer
 
-// {
-//     attacks: [],
-//     characters: [],
-//     spells: [],
-//     equipment []
-// }

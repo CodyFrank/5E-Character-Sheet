@@ -1,6 +1,9 @@
 import React from 'react'
 
 export default class CharacterCard extends React.Component{
+    constructor(props){
+        super(props)
+    }
 
     render(){
         return(

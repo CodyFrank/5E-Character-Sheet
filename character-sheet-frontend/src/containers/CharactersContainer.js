@@ -1,11 +1,16 @@
 import React from 'react'
 import CharacterCard from '../components/CharacterCard.js'
 import { connect } from 'react-redux'
+import { fetchCharacters } from '../actions'
 
 class CharactersContainer extends React.Component{
 
-    renderCharacterCards = (characters) => {
-        characters.map(c => <CharacterCard character={c} />)
+    componentDidMount(){
+        this.props.fetchCharacters()
+    }
+
+    renderCharacterCards = () => {
+        this.props.characters.characters.map(c => <CharacterCard character={c} />)
     }
 
     render(){
@@ -21,4 +26,4 @@ const mapStateToProps = ({ characters }) => ({
     characters
 })
 
-export default connect(mapStateToProps)(CharactersContainer)
+export default connect(mapStateToProps, { fetchCharacters })(CharactersContainer)
