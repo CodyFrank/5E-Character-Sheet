@@ -1,2 +1,2 @@
-class CharactersController < ApplicationController
+class Api::V1::CharactersController < ApplicationController
 end

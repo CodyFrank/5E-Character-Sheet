@@ -1,2 +1,2 @@
-class SpellsController < ApplicationController
+class Api::V1::SpellsController < ApplicationController
 end
