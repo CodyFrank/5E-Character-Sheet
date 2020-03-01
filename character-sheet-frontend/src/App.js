@@ -4,9 +4,10 @@ import {
   BrowserRouter as Router,
   Route,
   Switch,
-  Link
+  Link, 
  } from 'react-router-dom'
  import CharactersContainer from './containers/CharactersContainer'
+ import CharacterContainer from './containers/CharacterContainer'
  import Home from './components/Home'
  import NewCharacter from './components/NewCharacter'
  import NewAttack from './components/NewAttack'
@@ -41,6 +42,10 @@ function App() {
 
           <Route path="/characters">
             <CharactersContainer/>
+          </Route>
+
+          <Route path="/character/:id">
+            <CharacterContainer />
           </Route>
           
           <Route path="/">

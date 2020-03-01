@@ -1,1 +1,1 @@
-export { fetchCharacters } from './characters.js'
+export { fetchCharacters, fetchCharacter } from './characters.js'
