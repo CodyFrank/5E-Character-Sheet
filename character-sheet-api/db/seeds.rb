@@ -8,7 +8,7 @@
 
 c = Character.create(
     {
-        name: "Herione Granger",
+        name: "Hermione Granger",
         level: 1,
         character_class: "Wizard",
         back_ground: "Acolyte", 

@@ -1,9 +1,16 @@
 import React from 'react'
+import { connect } from 'react-redux'
+import { fetchCharacter } from '../actions'
 
-export default class CharacterContainer extends React.Component{
+class CharacterContainer extends React.Component{
+
+    componentDidMount(){
+        this.props.fetchCharacter()
+    }
+
     render(){
         return(
-            <div>
+            <div className={CharacterContainer}>
                 <h1>render a single character info here</h1>
                 <p>renders characters stats component</p>
                 <p>maps and renders all spells/attacks/equipment for a character</p>
@@ -11,4 +18,10 @@ export default class CharacterContainer extends React.Component{
             </div>
         )
     }
+
 }
+const mapStateToProps = ({ character }) => ({
+    character
+})
+
+export default connect(mapStateToProps, { fetchCharacter })(CharacterContainer)
