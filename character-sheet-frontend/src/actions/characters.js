@@ -7,7 +7,7 @@ export const fetchCharacters = () => dispatch => {
 }
 
 export const fetchCharacter = (id) => dispatch => {
-    fetch(`http://localhost:3000/api/v1/character/${id}`)
+    fetch(`http://localhost:3000/api/v1/characters/${id}`)
     .then(resp => resp.json())
     .then(character => dispatch({ type: ADD_CHARACTER, payload: character}))
 }

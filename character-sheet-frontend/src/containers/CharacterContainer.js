@@ -1,16 +1,16 @@
-import React from 'react'
+import React, { useEffect} from 'react'
 import { connect } from 'react-redux'
 import { fetchCharacter } from '../actions'
 import { useParams } from 'react-router-dom'
 
-function CharacterContainer(){
+function CharacterContainer(props){
 
 
-    // componentDidMount(){
-    //     this.props.fetchCharacter(this.id)
-    // }
+    useEffect(() =>{
+        props.fetchCharacter(id)
+    })
 
-    const { id } = useParams()
+    let { id } = useParams()
 
     return(
         <div className={CharacterContainer}>
