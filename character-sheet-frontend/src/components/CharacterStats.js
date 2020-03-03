@@ -1,11 +1,19 @@
 import React from 'react'
 
 export default class CharacterStats extends React.Component{
+
+    renderStats = () => {
+        let output = ""
+        for (let [key, value] of Object.entries(this.props.character)) {
+            output += <div>{`${key}: ${value}`}</div>
+        }
+    }
+
     render(){
         return(
-            <div>
-                <h1> info on an characters stats here </h1>
-            </div>
+            <>
+                {this.renderStats()}
+            </>
         )
     }
 }

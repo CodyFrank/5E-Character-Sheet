@@ -10,12 +10,13 @@ class CharactersContainer extends React.Component{
     }
 
     renderCharacterCards = () => {
-        return this.props.characters.map(c => <CharacterCard character={c} />)
+        return this.props.characters.map(c => <CharacterCard key={c.id} character={c} />)
     }
 
     render(){
         return(
-            <div className={CharactersContainer}>
+            <div className={"CharactersContainer"}>
+                {console.log(this.props.characters)}
                 {this.renderCharacterCards()}
             </div>
         )

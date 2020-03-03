@@ -40,13 +40,15 @@ function App() {
             <NewCharacter/>
           </Route> 
 
+          <Route path="/characters/:id">
+            <CharacterContainer />
+          </Route>
+          
+
           <Route path="/characters">
             <CharactersContainer/>
           </Route>
 
-          <Route path="/character/:id">
-            <CharacterContainer />
-          </Route>
           
           <Route path="/">
             <Home/>
