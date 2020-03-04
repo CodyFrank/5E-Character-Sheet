@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { fetchCharacter } from '../actions'
 import { withRouter } from 'react-router-dom'
 import CharacterStats from '../components/CharacterStats.js'
+import Spell from '../components/Spell.js'
 
 class CharacterContainer extends React.Component{
     constructor(props) {
@@ -23,12 +24,20 @@ class CharacterContainer extends React.Component{
         }
     }
 
+    renderCharacterSpells = () => {
+        if(this.props.characters.length > 0){
+            const character = this.props.characters[0]
+            const spells = character.spells
+            return spells.map( s => <Spell key={`${character.id}${s.id}`} level={s.level} name={s.name} description={s.description}/>)
+        }
+    }
+
 
     render(){
         return(
             <div className={'CharacterContainer'}>
                 {this.renderCharacterStats()}
-                <p>renders characters stats component</p>
+                {this.renderCharacterSpells()}
                 <p>maps and renders all spells/attacks/equipment for a character</p>
                 <p>directs to a nested route for new attack/spell/equipment</p>
             </div>

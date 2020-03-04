@@ -4,7 +4,9 @@ export default class Spell extends React.Component{
     render(){
         return(
             <div>
-                <h1> info on an spell here </h1>
+                <p>name: {this.props.name}</p>
+                <p>level: {this.props.level}</p>
+                <p>description: {this.props.description}</p>
             </div>
         )
     }

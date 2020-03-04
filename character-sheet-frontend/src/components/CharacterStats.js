@@ -18,7 +18,6 @@ export default class CharacterStats extends React.Component{
 
     }
 
-
     render(){
         return(
             <div>
