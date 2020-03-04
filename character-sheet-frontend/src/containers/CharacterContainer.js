@@ -5,6 +5,7 @@ import { withRouter } from 'react-router-dom'
 import CharacterStats from '../components/CharacterStats.js'
 import Spell from '../components/Spell.js'
 import Attack from '../components/Attack.js'
+import Equipment from '../components/Equipment.js'
 
 class CharacterContainer extends React.Component{
     constructor(props) {
@@ -37,8 +38,15 @@ class CharacterContainer extends React.Component{
         if(this.props.characters.length > 0){
             const character = this.props.characters[0]
             const attacks = character.attacks
-            console.log(attacks)
             return attacks.map( a => <Attack key={`${character.id}${a.id}`} name={a.name} attack_bonus={a.attack_bonus} damage={a.damage} damage_type={a.damage_type}/>)
+        }
+    }
+
+    renderCharacterEquipment = () => {
+        if(this.props.characters.length > 0){
+            const character = this.props.characters[0]
+            const equipment = character.equipment
+            return equipment.map( e => <Equipment key={`${character.id}${e.id}`} name={e.name} description={e.description}/>)
         }
     }
 
@@ -49,6 +57,7 @@ class CharacterContainer extends React.Component{
                 {this.renderCharacterStats()}
                 {this.renderCharacterSpells()}
                 {this.renderCharacterAttacks()}
+                {this.renderCharacterEquipment()}
                 <p>maps and renders all spells/attacks/equipment for a character</p>
                 <p>directs to a nested route for new attack/spell/equipment</p>
             </div>
