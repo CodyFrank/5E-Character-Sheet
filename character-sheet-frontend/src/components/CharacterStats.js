@@ -10,7 +10,7 @@ export default class CharacterStats extends React.Component{
     render(){
         return(
             <div>
-                <p>{this.props.statName}: {this.props.statValue}</p>
+                <p>{`${this.props.statName}: ${this.props.statValue}`}</p>
             </div>
         )
     }

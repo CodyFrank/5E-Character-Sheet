@@ -17,8 +17,9 @@ class CharacterContainer extends React.Component{
 
     renderCharacterStats = () => {
         if(this.props.characters.length > 0){
-            const keys = Object.keys(this.props.characters[0])
-            return keys.map(k => <CharacterStats key={`${this.props.characters[0].id}${k}`} statName={k} statValue={this.props.characters[k]} /> )
+            const character = this.props.characters[0]
+            const keys = Object.keys(character)
+            return keys.map(k => <CharacterStats key={`${character.id}${k}`} statName={k} statValue={character[k]} /> )
         }
     }
 
