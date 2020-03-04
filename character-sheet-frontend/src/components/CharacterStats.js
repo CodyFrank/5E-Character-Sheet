@@ -2,18 +2,16 @@ import React from 'react'
 
 export default class CharacterStats extends React.Component{
 
-    renderStats = () => {
-        let output = ""
-        for (let [key, value] of Object.entries(this.props.character)) {
-            output += <div>{`${key}: ${value}`}</div>
-        }
-    }
+    // renderStats = () => {
+    //     const keys = Object.keys(this.props.character)
+    //     return keys.map( k => <StatBlock key={`${this.props.character.id}${k}`} statName={k} statValue={this.props.character[k]}/>)
+    // }
 
     render(){
         return(
-            <>
-                {this.renderStats()}
-            </>
+            <div>
+                <p>{this.props.statName}: {this.props.statValue}</p>
+            </div>
         )
     }
 }
