@@ -2,15 +2,27 @@ import React from 'react'
 
 export default class CharacterStats extends React.Component{
 
-    // renderStats = () => {
-    //     const keys = Object.keys(this.props.character)
-    //     return keys.map( k => <StatBlock key={`${this.props.character.id}${k}`} statName={k} statValue={this.props.character[k]}/>)
-    // }
+    renderStats(){
+        switch(this.props.statName) {
+            case "id": 
+              return 
+            case "attacks":
+              return
+            case "equipment":
+              return
+            case "spells":
+              return
+            default:
+              return <p>{`${this.props.statName}: ${this.props.statValue}`}</p>
+        }
+
+    }
+
 
     render(){
         return(
             <div>
-                <p>{`${this.props.statName}: ${this.props.statValue}`}</p>
+                {this.renderStats()}
             </div>
         )
     }
