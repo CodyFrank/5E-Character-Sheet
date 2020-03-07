@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { fetchCharacter } from '../actions'
+import { fetchCharacter, deleteCharacter } from '../actions'
 import { withRouter } from 'react-router-dom'
 import CharacterStats from '../components/CharacterStats.js'
 import Spell from '../components/Spell.js'
@@ -15,6 +15,7 @@ class CharacterContainer extends React.Component{
 
     
     componentDidMount(){
+        console.log(this.props)
         this.props.fetchCharacter(this.id)
     }
 
@@ -58,19 +59,24 @@ class CharacterContainer extends React.Component{
                 {this.renderCharacterSpells()}
                 {this.renderCharacterAttacks()}
                 {this.renderCharacterEquipment()}
-                <p>maps and renders all spells/attacks/equipment for a character</p>
                 <p>directs to a nested route for new attack/spell/equipment</p>
+                <button onClick={this.props.deleteCharacter}>Delete Character</button>
             </div>
         )
     }
 
 }
 
-
+const mapDispatchToProps = (dispatch) => {
+    return { 
+        fetchCharacter: (id) => dispatch(fetchCharacter(id)),
+        deleteCharacter: (id) => dispatch(deleteCharacter(id))
+     }
+}
 
 const mapStateToProps = ({ characters }) => ({
     characters: characters
 })
 
-const connected = connect(mapStateToProps, { fetchCharacter })(CharacterContainer)
+const connected = connect(mapStateToProps, mapDispatchToProps)(CharacterContainer)
 export default withRouter(connected)

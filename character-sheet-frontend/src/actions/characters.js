@@ -11,3 +11,13 @@ export const fetchCharacter = (id) => dispatch => {
     .then(resp => resp.json())
     .then(character => dispatch({ type: ADD_CHARACTER, payload: character}))
 }
+
+export const deleteCharacter = (id) => dispatch => {
+    fetch(`http://localhost:3000/api/v1/characters/${id}`, {
+        method: 'DELETE', 
+        headers: {
+            'content-type': 'application/json'
+        }
+    }).then(res => res.json())
+    .then(character => dispatch({ type: DELETE_CHARACTER, payload: character}))
+}
