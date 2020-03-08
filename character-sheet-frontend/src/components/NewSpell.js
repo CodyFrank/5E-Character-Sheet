@@ -31,7 +31,7 @@ class NewSpell extends React.Component {
 
       handleSubmit = e => {
         e.preventDefault()
-        let formData = { Level: parseInt(this.state.level), name: this.state.name, description: this.state.description, character_id: this.props.characterId }
+        let formData = { level: parseInt(this.state.level), name: this.state.name, description: this.state.description, character_id: this.props.characterId }
         this.props.addSpell(formData)
       }
   
@@ -50,11 +50,10 @@ class NewSpell extends React.Component {
     }
 }
 
-const mapStateToProps = (state) => ({})
 const mapDispatchToProps = (dispatch) => {
     return{
         addSpell: (data) => dispatch(addSpell(data))
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(NewSpell)
+export default connect({}, mapDispatchToProps)(NewSpell)

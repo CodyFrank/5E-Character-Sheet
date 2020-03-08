@@ -8,6 +8,7 @@ import Spell from '../components/Spell.js'
 import Attack from '../components/Attack.js'
 import Equipment from '../components/Equipment.js'
 import NewSpell from '../components/NewSpell'
+import NewAttack from '../components/NewAttack'
 
 
 
@@ -71,6 +72,7 @@ class CharacterContainer extends React.Component{
                     {this.renderCharacterSpells()}
                     <NewSpell characterId={this.id} />
                     {this.renderCharacterAttacks()}
+                    <NewAttack characterId={this.id} />
                     {this.renderCharacterEquipment()}
                     <p>directs to a nested route for new attack/spell/equipment</p>
                     <button onClick={(e) => this.deleteCharacter(e)}>Delete Character</button>
