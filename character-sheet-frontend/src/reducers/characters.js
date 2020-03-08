@@ -5,7 +5,7 @@ export function charactersReducer(state=[], action){
         case ADD_CHARACTER:
             return [ ...state, action.payload ]
         case DELETE_CHARACTER:
-            return state.filter(c => c.id !== action.payload.id)
+            return state.filter(c => c.id !== action.payload.characterId )
         default:
             return state
     }

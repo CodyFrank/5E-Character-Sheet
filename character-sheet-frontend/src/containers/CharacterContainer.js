@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { fetchCharacter, deleteCharacter } from '../actions'
 import { withRouter, BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import CharacterStats from '../components/CharacterStats.js'
-import Home from '../components/Home'
+import CharactersContainer from './CharactersContainer'
 import Spell from '../components/Spell.js'
 import Attack from '../components/Attack.js'
 import Equipment from '../components/Equipment.js'
@@ -55,7 +55,8 @@ class CharacterContainer extends React.Component{
     deleteCharacter = (e) => {
         e.preventDefault()
         this.props.deleteCharacter(this.id)
-        this.props.history.push("/")
+        
+        this.props.history.push("/characters")
     }
 
 
@@ -73,8 +74,8 @@ class CharacterContainer extends React.Component{
 
 
                 <Switch>
-                    <Route exact path="/">
-                        <Home />
+                    <Route exact path="/characters">
+                        <CharactersContainer />
                     </Route>
                 </Switch>
             </Router>

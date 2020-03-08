@@ -19,5 +19,6 @@ export const deleteCharacter = (id) => dispatch => {
             'content-type': 'application/json'
         }
     }).then(res => res.json())
-    .then(character => dispatch({ type: DELETE_CHARACTER, payload: character}))
+    .then(characterId => dispatch({ type: DELETE_CHARACTER, payload: characterId }))
 }
+
