@@ -1,7 +1,8 @@
 class Api::V1::SpellsController < ApplicationController
     def create
         character = Character.find_by(id: spell_params[:character_id])
-        if spell = character.spells.build(spell_params)
+        spell = character.spells.build(spell_params)
+        if spell.save 
             render json: SpellSerializer.new(spell).to_serialized_json
         else
             render json: {message: "Creating that Spell failed"}

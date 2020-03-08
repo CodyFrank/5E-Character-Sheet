@@ -31,7 +31,7 @@ class NewSpell extends React.Component {
 
       handleSubmit = e => {
         e.preventDefault()
-        let formData = { Level: this.state.level, name: this.state.name, description: this.state.description, character_id: this.props.characterId }
+        let formData = { Level: parseInt(this.state.level), name: this.state.name, description: this.state.description, character_id: this.props.characterId }
         this.props.addSpell(formData)
       }
   
