@@ -2,12 +2,16 @@ export {
      fetchCharacters, 
      fetchCharacter,
      deleteCharacter 
-    } from './characters.js'
+} from './characters.js'
 
-    export {
+export {
          addSpell
-    } from './spells.js'
+} from './spells.js'
 
-    export{
-         addAttack
-    } from './attacks.js'
+export{
+     addAttack
+} from './attacks.js'
+
+export {
+     addEquipment
+} from './equipment.js'

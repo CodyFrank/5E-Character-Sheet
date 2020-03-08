@@ -12,6 +12,9 @@ export function charactersReducer(state=[], action){
         case ADD_ATTACK:
             let acharacter = state.find(e => e.id === action.payload.character_id)
             return [...state, acharacter.attacks.push(action.payload)]
+        case ADD_EQUIPMENT:
+            let echaracter = state.find(e => e.id === action.payload.character_id)
+            return [...state, echaracter.equipment.push(action.payload)]
         default:
             return state
     }

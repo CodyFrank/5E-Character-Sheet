@@ -1,7 +1,7 @@
 import { ADD_ATTACK } from '../actionTypes'
 
 export const addAttack = (data) => dispatch => {
-    fetch('http://localhost:3000/api/v1/spells',{
+    fetch('http://localhost:3000/api/v1/attacks',{
         method: 'POST', 
         headers: {
             'content-type': 'application/json'
