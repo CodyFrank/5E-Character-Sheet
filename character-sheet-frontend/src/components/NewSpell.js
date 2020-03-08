@@ -4,11 +4,14 @@ import { connect } from 'react-redux'
 
 
 class NewSpell extends React.Component {
-    state = {
+  constructor(props){
+    super(props)
+    this.state = {
         level: "",
         name: "",
         description: ""
     }
+  }
 
 
     handleLevelChange = e => {
