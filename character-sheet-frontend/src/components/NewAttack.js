@@ -1,37 +1,42 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { addAttack } from '../actions'
 import { connect } from 'react-redux'
 
 class NewAttack extends React.Component{
-
-    state = {
-            name: "",
-            attack_bonus: "",
-            damage: "",
-            damage_type: ""
-      }
+    constructor(props){
+        super(props)
+        this.state = {
+                name: "",
+                attack_bonus: "",
+                damage: "",
+                damage_type: ""
+            }
+    }    
 
       handleNameChange = e => {
         this.setState({
-          name: e.target.name
+          name: e.target.value
         })
       }
+
+
+  
       
       handleAttackBonusChange = e => {
         this.setState({
-          attack_bonus: e.target.attack_bonus
+          attack_bonus: e.target.value
         })
       }
 
       handleDamageChange = e => {
         this.setState({
-          damage: e.target.damage
+          damage: e.target.value
         })
       }
 
       handleDamageTypeChange = e => {
         this.setState({
-          damage_type: e.target.damage_type
+          damage_type: e.target.value
         })
       }
 
@@ -68,4 +73,6 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-export default connect({}, mapDispatchToProps)(NewAttack)
+const mapStateToProps = (state) => ({})
+
+export default connect(mapStateToProps, mapDispatchToProps)(NewAttack)

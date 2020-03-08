@@ -56,4 +56,6 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-export default connect({}, mapDispatchToProps)(NewSpell)
+const mapStateToProps = (state) => ({})
+
+export default connect(mapStateToProps, mapDispatchToProps)(NewSpell)

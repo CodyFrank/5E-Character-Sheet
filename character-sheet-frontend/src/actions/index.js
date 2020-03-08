@@ -7,3 +7,7 @@ export {
     export {
          addSpell
     } from './spells.js'
+
+    export{
+         addAttack
+    } from './attacks.js'

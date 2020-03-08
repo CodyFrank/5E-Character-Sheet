@@ -1,4 +1,4 @@
-import { ADD_CHARACTER, DELETE_CHARACTER, ADD_SPELL } from '../actionTypes'
+import { ADD_CHARACTER, DELETE_CHARACTER, ADD_SPELL, ADD_ATTACK } from '../actionTypes'
 
 export function charactersReducer(state=[], action){
     switch(action.type){
@@ -7,8 +7,11 @@ export function charactersReducer(state=[], action){
         case DELETE_CHARACTER:
             return state.filter(c => c.id !== action.payload.characterId )
         case ADD_SPELL:
-            let character = state.find(e => e.id === action.payload.character_id)
-            return [...state, character.spells.push(action.payload)]
+            let scharacter = state.find(e => e.id === action.payload.character_id)
+            return [...state, scharacter.spells.push(action.payload)]
+        case ADD_ATTACK:
+            let acharacter = state.find(e => e.id === action.payload.character_id)
+            return [...state, acharacter.attacks.push(action.payload)]
         default:
             return state
     }
