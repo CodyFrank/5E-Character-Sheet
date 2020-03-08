@@ -1,33 +1,35 @@
 class Api::V1::AttacksController < ApplicationController
     def create
-        character = Character.find_by(id: equipment_params[:character_id])
-        if equipment = character.equipment.build(equipment_params)
-            render json: EquipmentSerializer.new(equipment).to_serialized_json
+        character = Character.find_by(id: attack_params[:character_id])
+        attack = character.attacks.build(attack_params)
+        if attack.save
+            render json: AttackSerializer.new(attack).to_serialized_json
         else
-            render json: {message: "Creating that Equipment failed"}
+            render json: {message: "Creating that Attack failed"}
         end
+    end
 
     def update
-        equipment = Equipment.find_by(id: params[:id])
-        if Equipment.update(equipment_params)
-            render json: EquipmentSerializer.new(equipment).to_serialized_json
+        attack = Attack.find_by(id: params[:id])
+        if Attack.update(attack_params)
+            render json: AttackSerializer.new(attack).to_serialized_json
         else
-            render json: {message: "Cannot update that Equipment"}
+            render json: {message: "Cannot update that Attack"}
         end
     end
 
     def destroy
-        if equipment = Equipment.find_by(id: params[:id]).destroy
-            render json: {equipmentId: equipment.id}
+        if attack = Attack.find_by(id: params[:id]).destroy
+            render json: {attackId: attack.id}
         else
-            render json: {message: "Cannot delete that equipment"}
+            render json: {message: "Cannot delete that attack"}
         end
     end
 
     private
 
-    def equipment_params
-        params.require(:equipment).permit(:name, :description, :character_id)
+    def attack_params
+        params.require(:attack).permit(:name, :attack_bonus, :damage, :damage_type, :character_id)
     end
 
 end
