@@ -6,6 +6,7 @@ class Api::V1::SpellsController < ApplicationController
         else
             render json: {message: "Creating that Spell failed"}
         end
+    end
 
     def update
         spell = Spell.find_by(id: params[:id])

@@ -7,7 +7,7 @@ class EquipmentSerializer
     def to_serialized_json
         options = {
             include: {
-                day:{
+                character:{
                     except: [:created_at, :updated_at]
                 },
             },

@@ -1,40 +1,60 @@
-import React, { useState } from 'react'
-import Form from '../Form'
-
-export default function NewCharacterForm(){
-
-    const [inputs, setInputs] = useState(
-        {
-            level: "",
-            name: "",
-            description: ""
-      }
-    )
+import React from 'react'
+import { addSpell } from '../actions'
+import { connect } from 'react-redux'
 
 
-    const handleFormSubmit = array => {
-        const newInputs = {
-            ...inputs,
-            level: "",
-            name: "",
-            description: ""
-            }
-        
-        setInputs(newInputs)
+class NewSpell extends React.Component {
+    state = {
+        level: "",
+        name: "",
+        description: ""
     }
 
 
+    handleLevelChange = e => {
+        this.setState({
+          level: e.target.value
+        })
+      }
+
+    handleNameChange = e => {
+      this.setState({
+        name: e.target.value
+      })
+    }
+
+    handleDescriptionChange = e => {
+        this.setState({
+          description: e.target.value
+        })
+      }
+
+      handleSubmit = e => {
+        e.preventDefault()
+        let formData = { Level: this.state.level, name: this.state.name, description: this.state.description, character_id: this.props.characterId }
+        this.props.addSpell(formData)
+      }
+  
+
+    render(){
         return(
             <div>
-                <Form
-                submitCallback={handleFormSubmit}
-                inputs={[
-                    'level',
-                    'name',
-                    'description'  
-                ]}
-                submitValue={"Create Spell"}
-                />
+                <form onSubmit={e => this.handleSubmit(e)}>
+                    <input type="text" onChange={e => this.handleLevelChange(e)} name="level" value={this.state.level} />
+                    <input type="text" onChange={e => this.handleNameChange(e)} name="name" value={this.state.name} />
+                    <input type="text" onChange={e => this.handleDescriptionChange(e)} name="description" value={this.state.description} />
+                    <input type="submit"/>
+                </form>
             </div>
         )
+    }
 }
+
+const mapStateToProps = (state) => ({})
+const mapDispatchToProps = (dispatch) => {
+    return{
+        addSpell: (data) => dispatch(addSpell(data))
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(NewSpell)

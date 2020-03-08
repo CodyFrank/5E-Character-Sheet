@@ -34,7 +34,7 @@ export default function Form(props) {
     return (
         <form>
             {renderInputs()}
-    <button onClick={handleSubmit}>{props.submitValue}</button>
+            <button onClick={handleSubmit}>{props.submitValue}</button>
         </form>
     )
 

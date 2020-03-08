@@ -7,6 +7,9 @@ import CharactersContainer from './CharactersContainer'
 import Spell from '../components/Spell.js'
 import Attack from '../components/Attack.js'
 import Equipment from '../components/Equipment.js'
+import NewSpell from '../components/NewSpell'
+
+
 
 class CharacterContainer extends React.Component{
     constructor(props) {
@@ -55,10 +58,10 @@ class CharacterContainer extends React.Component{
     deleteCharacter = (e) => {
         e.preventDefault()
         this.props.deleteCharacter(this.id)
-        
         this.props.history.push("/characters")
     }
 
+   
 
     render(){
         return(
@@ -66,17 +69,19 @@ class CharacterContainer extends React.Component{
                 <div className={'CharacterContainer'}>
                     {this.renderCharacterStats()}
                     {this.renderCharacterSpells()}
+                    <NewSpell characterId={this.id} />
                     {this.renderCharacterAttacks()}
                     {this.renderCharacterEquipment()}
                     <p>directs to a nested route for new attack/spell/equipment</p>
                     <button onClick={(e) => this.deleteCharacter(e)}>Delete Character</button>
+                    
                 </div>
 
 
                 <Switch>
                     <Route exact path="/characters">
                         <CharactersContainer />
-                    </Route>
+                    </Route> 
                 </Switch>
             </Router>
         )
