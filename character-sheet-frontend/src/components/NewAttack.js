@@ -48,7 +48,14 @@ class NewAttack extends React.Component{
             attack_bonus: this.state.attack_bonus,
             damage: this.state.damage,
             damage_type: this.state.damage_type, 
-            character_id: this.props.characterId }
+            character_id: this.props.characterId 
+        }
+        this.setState({
+            name: "",
+            attack_bonus: "",
+            damage: "",
+            damage_type: ""
+        })
         this.props.addAttack(formData)
       }
 
@@ -56,11 +63,11 @@ class NewAttack extends React.Component{
          return(
              <div>
                 <form onSubmit={e => this.handleSubmit(e)}>
-                    <input type="text" onChange={e => this.handleNameChange(e)} name="name" value={this.state.name} />
-                    <input type="text" onChange={e => this.handleAttackBonusChange(e)} name="attack_bonus" value={this.state.attack_bonus} />
-                    <input type="text" onChange={e => this.handleDamageChange(e)} name="damage" value={this.state.damage} />
-                    <input type="text" onChange={e => this.handleDamageTypeChange(e)} name="damage_type" value={this.state.damage_type} />
-                    <input type="submit"/>
+                    <input type="text" placeholder="Name" onChange={e => this.handleNameChange(e)} name="name" value={this.state.name} />
+                    <input type="text" placeholder="Attack Bonus" onChange={e => this.handleAttackBonusChange(e)} name="attack_bonus" value={this.state.attack_bonus} />
+                    <input type="text" placeholder="Damage" onChange={e => this.handleDamageChange(e)} name="damage" value={this.state.damage} />
+                    <input type="text" placeholder="Damage Type" onChange={e => this.handleDamageTypeChange(e)} name="damage_type" value={this.state.damage_type} />
+                    <input type="submit" value="Create Attack"/>
                 </form>
              </div>
          )
