@@ -1,323 +1,67 @@
 import React, { useState } from 'react'
-import Form from '../Form'
+import { addCharacter } from '../actions'
+import { connect } from 'react-redux'
 
-export default function NewCharacterForm(){
-
-    const [inputs, setInputs] = useState(
-        {
+class NewCharacter extends React.Component {
+    constructor(props){
+        super(props)
+        this.state = {
             name: "",
             level: "",
-            character_class: "",
-            back_ground: "",
-            player_name: "",
-            race: "",
-            alignment: "",
-            experience: "",
-            inspiration: "",
-            proficiency_bonus: "",
-            strength: "",
-            dexterity: "",
-            constitution: "",
-            intelligence: "",
-            wisdom: "",
-            charisma: "",
-            strength_modifier: "",
-            dexterity_modifier: "",
-            constitution_modifier: "",
-            intelligence_modifier: "",
-            wisdom_modifier: "",
-            charisma_modifier: "",
-            strength_saving_throw: "",
-            dexterity_saving_throw: "",
-            constitution_saving_throw: "",
-            intelligence_saving_throw: "",
-            wisdom_saving_throw: "",
-            charisma_saving_throw: "",
-            acrobatics_modifier: "",
-            animal_handling_modifier: "",
-            arcana_modifier: "",
-            athletics_modifier: "",
-            deception_modifier: "",
-            history_modifier: "",
-            insight_modifier: "",
-            intimidation_modifier: "",
-            investigation_modifier: "",
-            medicine_modifier: "",
-            nature_modifier: "",
-            perception_modifier: "",
-            performance_modifier: "",
-            persuasion_modifier: "",
-            religion_modifier: "",
-            slight_of_hand_modifier: "",
-            stealth_modifier: "",
-            survival_modifier: "",
-            passive_perception: "",
-            other_proficiencies_and_languages: "",
-            armor_class: "",
-            initiative: "",
-            speed: "",
-            hit_point_maximum: "",
-            current_hit_points: "",
-            temporary_hit_points: "",
-            hit_dice: "",
-            sucessful_death_saves: "",
-            failed_death_saves: "",
-            cp: "",
-            sp: "",
-            ep: "",
-            gp: "",
-            pp: "",
-            personality_traits: "",
-            ideals: "",
-            bonds: "",
-            flaws: "",
-            features_and_traits: "",
-            age: "",
-            height: "",
-            weight: "",
-            eyes: "",
-            skin: "",
-            hair: "",
-            allies_and_organizations: "",
-            character_backstory: "",
-            treasure: "",
-            spellcasting_ability: "",
-            spell_save_dc: "",
-            spell_attack_bonus: "",
-            level_one_spell_slots: "",
-            level_two_spell_slots: "",
-            level_three_spell_slots: "",
-            level_four_spell_slots: "",
-            level_five_spell_slots: "",
-            level_six_spell_slots: "",
-            level_seven_spell_slots: "",
-            level_eight_spell_slots: "",
-            level_nine_spell_slots: "",
-            level_one_used_spell_slots: "",
-            level_two_used_spell_slots: "",
-            level_three_used_spell_slots: "",
-            level_four_used_spell_slots: "",
-            level_five_used_spell_slots: "",
-            level_six_used_spell_slots: "",
-            level_seven_used_spell_slots: "",
-            level_eight_used_spell_slots: "",
-            level_nine_used_spell_slots: ""
-      }
-    )
-
-
-    const handleFormSubmit = array => {
-        const newInputs = {
-            ...inputs,
-            name: "",
-            level: "",
-            character_class: "",
-            back_ground: "",
-            player_name: "",
-            race: "",
-            alignment: "",
-            experience: "",
-            inspiration: "",
-            proficiency_bonus: "",
-            strength: "",
-            dexterity: "",
-            constitution: "",
-            intelligence: "",
-            wisdom: "",
-            charisma: "",
-            strength_modifier: "",
-            dexterity_modifier: "",
-            constitution_modifier: "",
-            intelligence_modifier: "",
-            wisdom_modifier: "",
-            charisma_modifier: "",
-            strength_saving_throw: "",
-            dexterity_saving_throw: "",
-            constitution_saving_throw: "",
-            intelligence_saving_throw: "",
-            wisdom_saving_throw: "",
-            charisma_saving_throw: "",
-            acrobatics_modifier: "",
-            animal_handling_modifier: "",
-            arcana_modifier: "",
-            athletics_modifier: "",
-            deception_modifier: "",
-            history_modifier: "",
-            insight_modifier: "",
-            intimidation_modifier: "",
-            investigation_modifier: "",
-            medicine_modifier: "",
-            nature_modifier: "",
-            perception_modifier: "",
-            performance_modifier: "",
-            persuasion_modifier: "",
-            religion_modifier: "",
-            slight_of_hand_modifier: "",
-            stealth_modifier: "",
-            survival_modifier: "",
-            passive_perception: "",
-            other_proficiencies_and_languages: "",
-            armor_class: "",
-            initiative: "",
-            speed: "",
-            hit_point_maximum: "",
-            current_hit_points: "",
-            temporary_hit_points: "",
-            hit_dice: "",
-            sucessful_death_saves: "",
-            failed_death_saves: "",
-            cp: "",
-            sp: "",
-            ep: "",
-            gp: "",
-            pp: "",
-            personality_traits: "",
-            ideals: "",
-            bonds: "",
-            flaws: "",
-            features_and_traits: "",
-            age: "",
-            height: "",
-            weight: "",
-            eyes: "",
-            skin: "",
-            hair: "",
-            allies_and_organizations: "",
-            character_backstory: "",
-            treasure: "",
-            spellcasting_ability: "",
-            spell_save_dc: "",
-            spell_attack_bonus: "",
-            level_one_spell_slots: "",
-            level_two_spell_slots: "",
-            level_three_spell_slots: "",
-            level_four_spell_slots: "",
-            level_five_spell_slots: "",
-            level_six_spell_slots: "",
-            level_seven_spell_slots: "",
-            level_eight_spell_slots: "",
-            level_nine_spell_slots: "",
-            level_one_used_spell_slots: "",
-            level_two_used_spell_slots: "",
-            level_three_used_spell_slots: "",
-            level_four_used_spell_slots: "",
-            level_five_used_spell_slots: "",
-            level_six_used_spell_slots: "",
-            level_seven_used_spell_slots: "",
-            level_eight_used_spell_slots: "",
-            level_nine_used_spell_slots: ""
-            }
-        
-        setInputs(newInputs)
+            character_class: ""
+        }
     }
 
+    handleLevelChange = e => {
+        this.setState({
+          level: e.target.value
+        })
+      }
 
+      handleNameChange = e => {
+        this.setState({
+          name: e.target.value
+        })
+      }
+
+      handleCharacterClassChange = e => {
+        this.setState({
+          name: e.target.value
+        })
+      }
+
+      handleSubmit = e => {
+        e.preventDefault()
+        let formData = { level: parseInt(this.state.level), name: this.state.name, character_class: this.state.character_class }
+        this.setState({
+          level: "",
+          name: "",
+          character_class: ""
+      })
+        this.props.addCharacter(formData)
+      }
+
+      render(){
         return(
             <div>
-                <Form
-                submitCallback={handleFormSubmit}
-                inputs={[
-                    "name",
-                    "level",
-                    "character_class",
-                    "back_ground",
-                    "player_name",
-                    "race",
-                    "alignment",
-                    "experience",
-                    "inspiration",
-                    "proficiency_bonus",
-                    "strength",
-                    "dexterity",
-                    "constitution",
-                    "intelligence",
-                    "wisdom",
-                    "charisma",
-                    "strength_modifier",
-                    "dexterity_modifier",
-                    "constitution_modifier",
-                    "intelligence_modifier",
-                    "wisdom_modifier",
-                    "charisma_modifier",
-                    "strength_saving_throw",
-                    "dexterity_saving_throw",
-                    "constitution_saving_throw",
-                    "intelligence_saving_throw",
-                    "wisdom_saving_throw",
-                    "charisma_saving_throw",
-                    "acrobatics_modifier",
-                    "animal_handling_modifier",
-                    "arcana_modifier",
-                    "athletics_modifier",
-                    "deception_modifier",
-                    "history_modifier",
-                    "insight_modifier",
-                    "intimidation_modifier",
-                    "investigation_modifier",
-                    "medicine_modifier",
-                    "nature_modifier",
-                    "perception_modifier",
-                    "performance_modifier",
-                    "persuasion_modifier",
-                    "religion_modifier",
-                    "slight_of_hand_modifier",
-                    "stealth_modifier",
-                    "survival_modifier",
-                    "passive_perception",
-                    "other_proficiencies_and_languages",
-                    "armor_class",
-                    "initiative",
-                    "speed",
-                    "hit_point_maximum",
-                    "current_hit_points",
-                    "temporary_hit_points",
-                    "hit_dice",
-                    "sucessful_death_saves",
-                    "failed_death_saves",
-                    "cp",
-                    "sp",
-                    "ep",
-                    "gp",
-                    "pp",
-                    "personality_traits",
-                    "ideals",
-                    "bonds",
-                    "flaws",
-                    "features_and_traits",
-                    "age",
-                    "height",
-                    "weight",
-                    "eyes",
-                    "skin",
-                    "hair",
-                    "allies_and_organizations",
-                    "character_backstory",
-                    "treasure",
-                    "spellcasting_ability",
-                    "spell_save_dc",
-                    "spell_attack_bonus",
-                    "level_one_spell_slots",
-                    "level_two_spell_slots",
-                    "level_three_spell_slots",
-                    "level_four_spell_slots",
-                    "level_five_spell_slots",
-                    "level_six_spell_slots",
-                    "level_seven_spell_slots",
-                    "level_eight_spell_slots",
-                    "level_nine_spell_slots",
-                    "level_one_used_spell_slots",
-                    "level_two_used_spell_slots",
-                    "level_three_used_spell_slots",
-                    "level_four_used_spell_slots",
-                    "level_five_used_spell_slots",
-                    "level_six_used_spell_slots",
-                    "level_seven_used_spell_slots",
-                    "level_eight_used_spell_slots",
-                    "level_nine_used_spell_slots"
-                ]}
-                submitValue={"Create Character"}
-                />
-                <h1>{console.log(inputs)}</h1>
+                <form onSubmit={e => this.handleSubmit(e)}>
+                    <input type="text" placeholder="Level" onChange={e => this.handleLevelChange(e)} name="level" value={this.state.level} />
+                    <input type="text" placeholder="Name" onChange={e => this.handleNameChange(e)} name="name" value={this.state.name} />
+                    <input type="text" placeholder="Class" onChange={e => this.handleCharacterClassChange(e)} name="character_class" value={this.state.character_class} />
+                    <input type="submit" value="Create Character"/>
+                </form>
             </div>
         )
+    }
 }
+
+
+const mapDispatchToProps = (dispatch) => {
+    return{
+        addCharacter: (data) => dispatch(addCharacter(data))
+    }
+}
+
+const mapStateToProps = (state) => ({})
+
+export default connect(mapStateToProps, mapDispatchToProps)(NewCharacter)
