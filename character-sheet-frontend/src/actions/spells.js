@@ -9,5 +9,5 @@ export const addSpell = (data) => dispatch => {
         body: JSON.stringify(data)
     })
     .then(resp => resp.json())
-    .then(spell => console.log(spell))
+    .then(spell => dispatch({ type: ADD_SPELL, payload: spell}))
 }

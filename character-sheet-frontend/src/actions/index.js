@@ -4,6 +4,6 @@ export {
      deleteCharacter 
     } from './characters.js'
 
-export {
-     addSpell
+    export {
+         addSpell
     } from './spells.js'
