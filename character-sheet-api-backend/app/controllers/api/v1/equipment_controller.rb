@@ -7,6 +7,7 @@ class Api::V1::EquipmentController < ApplicationController
         else
             render json: {message: "Creating that Equipment failed"}
         end
+    end
 
     def update
         equipment = Equipment.find_by(id: params[:id])
