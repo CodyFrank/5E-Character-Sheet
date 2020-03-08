@@ -20,7 +20,10 @@ class Api::V1::SpellsController < ApplicationController
 
     def destroy
         if spell = Spell.find_by(id: params[:id]).destroy
-            render json: {spellId: spell.id}
+            render json: {
+                spellId: spell.id,
+                characterId: spell.character_id
+            }
         else
             render json: {message: "Cannot delete that spell"}
         end

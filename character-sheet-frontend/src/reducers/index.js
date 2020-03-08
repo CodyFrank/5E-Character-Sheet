@@ -5,10 +5,7 @@ import { equipmentReducer } from './equipment'
 import { combineReducers } from 'redux'
 
 const rootReducer = combineReducers({
-    attacks: attacksReducer,
-    characters: charactersReducer,
-    spells: spellsReducer,
-    equipment: equipmentReducer
+    characters: charactersReducer
 })
 
 export default rootReducer

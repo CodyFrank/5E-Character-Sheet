@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { fetchCharacter, deleteCharacter } from '../actions'
+import { fetchCharacter, deleteCharacter, deleteSpell } from '../actions'
 import { withRouter, BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import CharacterStats from '../components/CharacterStats.js'
 import CharactersContainer from './CharactersContainer'
@@ -35,9 +35,16 @@ class CharacterContainer extends React.Component{
     renderCharacterSpells = () => {
         if(this.props.characters.length > 0){
             const character = this.props.characters[0]
-
             const spells = character.spells
-            return spells.map( s => <Spell key={`${character.id}${s.id}`} level={s.level} name={s.name} description={s.description}/>)
+            if(spells){
+                return spells.map( s => {
+                    return <div key={`${character.id}${s.id}`}>
+                      <Spell key={`${s.id}`} level={s.level} name={s.name} description={s.description}/>
+                      <button onClick={(e) => this.deleteSpell(e, s.id)}>Delete Spell</button>
+                    </div>
+                } 
+                )
+            }
         }
     }
 
@@ -45,7 +52,9 @@ class CharacterContainer extends React.Component{
         if(this.props.characters.length > 0){
             const character = this.props.characters[0]
             const attacks = character.attacks
-            return attacks.map( a => <Attack key={`${character.id}${a.id}`} name={a.name} attack_bonus={a.attack_bonus} damage={a.damage} damage_type={a.damage_type}/>)
+            if(attacks){
+                return attacks.map( a => <Attack key={`${character.id}${a.id}`} name={a.name} attack_bonus={a.attack_bonus} damage={a.damage} damage_type={a.damage_type}/>)
+            }
         }
     }
 
@@ -53,7 +62,9 @@ class CharacterContainer extends React.Component{
         if(this.props.characters.length > 0){
             const character = this.props.characters[0]
             const equipment = character.equipment
-            return equipment.map( e => <Equipment key={`${character.id}${e.id}`} name={e.name} description={e.description}/>)
+            if(equipment){
+                return equipment.map( e => <Equipment key={`${character.id}${e.id}`} name={e.name} description={e.description}/>)
+            }
         }
     }
 
@@ -61,6 +72,11 @@ class CharacterContainer extends React.Component{
         e.preventDefault()
         this.props.deleteCharacter(this.id)
         this.props.history.push("/characters")
+    }
+
+    deleteSpell = (e, spellId) => {
+        e.preventDefault()
+        this.props.deleteSpell(spellId)
     }
 
    
@@ -95,7 +111,8 @@ class CharacterContainer extends React.Component{
 const mapDispatchToProps = (dispatch) => {
     return { 
         fetchCharacter: (id) => dispatch(fetchCharacter(id)),
-        deleteCharacter: (id) => dispatch(deleteCharacter(id))
+        deleteCharacter: (id) => dispatch(deleteCharacter(id)),
+        deleteSpell: (id) => dispatch(deleteSpell(id))
      }
 }
 

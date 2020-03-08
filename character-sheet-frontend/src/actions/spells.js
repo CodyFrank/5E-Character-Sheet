@@ -1,4 +1,4 @@
-import { ADD_SPELL } from '../actionTypes'
+import { ADD_SPELL, DELETE_SPELL } from '../actionTypes'
 
 export const addSpell = (data) => dispatch => {
     fetch('http://localhost:3000/api/v1/spells',{
@@ -10,4 +10,16 @@ export const addSpell = (data) => dispatch => {
     })
     .then(resp => resp.json())
     .then(spell => dispatch({ type: ADD_SPELL, payload: spell}))
+}
+
+export const deleteSpell = (id) => dispatch => {
+    fetch(`http://localhost:3000/api/v1/spells/${id}`,{
+        method: 'DELETE', 
+        headers: {
+            'content-type': 'application/json'
+        },
+        body: JSON.stringify(id)
+    })
+    .then(resp => resp.json())
+    .then(spell => dispatch({ type: DELETE_SPELL, payload: spell}))
 }

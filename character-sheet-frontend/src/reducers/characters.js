@@ -1,4 +1,4 @@
-import { ADD_CHARACTER, DELETE_CHARACTER, ADD_SPELL, ADD_ATTACK, ADD_EQUIPMENT } from '../actionTypes'
+import { ADD_CHARACTER, DELETE_CHARACTER, ADD_SPELL, ADD_ATTACK, ADD_EQUIPMENT, DELETE_SPELL } from '../actionTypes'
 
 export function charactersReducer(state=[], action){
     switch(action.type){
@@ -7,15 +7,24 @@ export function charactersReducer(state=[], action){
         case DELETE_CHARACTER:
             return state.filter(c => c.id !== action.payload.characterId )
         case ADD_SPELL:
-            let scharacter = state.find(e => e.id === action.payload.character_id)
-            return [...state, scharacter.spells.push(action.payload)]
+            var character = state.find(e => e.id === action.payload.character_id)
+            return [...state, character.spells.push(action.payload)]
         case ADD_ATTACK:
-            let acharacter = state.find(e => e.id === action.payload.character_id)
-            return [...state, acharacter.attacks.push(action.payload)]
+            var character = state.find(e => e.id === action.payload.character_id)
+            return [...state, character.attacks.push(action.payload)]
         case ADD_EQUIPMENT:
-            let echaracter = state.find(e => e.id === action.payload.character_id)
-            return [...state, echaracter.equipment.push(action.payload)]
+            var character = state.find(e => e.id === action.payload.character_id)
+            return [...state, character.equipment.push(action.payload)]
+        case DELETE_SPELL:
+            const newArray = []
+            var index = state.findIndex(e => e.id === action.payload.characterId)
+            var character = state[index]
+            character.spells = character.spells.filter(s => s.id !== action.payload.spellId)
+            newArray.push(character)
+            return newArray
         default:
             return state
     }
 }
+
+

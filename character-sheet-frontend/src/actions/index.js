@@ -6,7 +6,8 @@ export {
 } from './characters.js'
 
 export {
-         addSpell
+         addSpell,
+         deleteSpell
 } from './spells.js'
 
 export{
