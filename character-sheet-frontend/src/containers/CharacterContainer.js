@@ -1,8 +1,9 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { fetchCharacter, deleteCharacter } from '../actions'
-import { withRouter } from 'react-router-dom'
+import { withRouter, BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import CharacterStats from '../components/CharacterStats.js'
+import CharactersContainer from './CharactersContainer'
 import Spell from '../components/Spell.js'
 import Attack from '../components/Attack.js'
 import Equipment from '../components/Equipment.js'
@@ -15,7 +16,6 @@ class CharacterContainer extends React.Component{
 
     
     componentDidMount(){
-        console.log(this.props)
         this.props.fetchCharacter(this.id)
     }
 
@@ -30,6 +30,7 @@ class CharacterContainer extends React.Component{
     renderCharacterSpells = () => {
         if(this.props.characters.length > 0){
             const character = this.props.characters[0]
+
             const spells = character.spells
             return spells.map( s => <Spell key={`${character.id}${s.id}`} level={s.level} name={s.name} description={s.description}/>)
         }
@@ -51,17 +52,32 @@ class CharacterContainer extends React.Component{
         }
     }
 
+    deleteCharacter = (e) => {
+        e.preventDefault()
+        this.props.deleteCharacter(this.id)
+        this.props.history.push("/characters")
+    }
+
 
     render(){
         return(
-            <div className={'CharacterContainer'}>
-                {this.renderCharacterStats()}
-                {this.renderCharacterSpells()}
-                {this.renderCharacterAttacks()}
-                {this.renderCharacterEquipment()}
-                <p>directs to a nested route for new attack/spell/equipment</p>
-                <button onClick={this.props.deleteCharacter}>Delete Character</button>
-            </div>
+            <Router>
+                <div className={'CharacterContainer'}>
+                    {this.renderCharacterStats()}
+                    {this.renderCharacterSpells()}
+                    {this.renderCharacterAttacks()}
+                    {this.renderCharacterEquipment()}
+                    <p>directs to a nested route for new attack/spell/equipment</p>
+                    <button onClick={(e) => this.deleteCharacter(e)}>Delete Character</button>
+                </div>
+
+
+                <Switch>
+                    <Route exact path="/characters">
+                        <CharactersContainer/>
+                    </Route>
+                </Switch>
+            </Router>
         )
     }
 

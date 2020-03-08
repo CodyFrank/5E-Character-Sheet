@@ -16,7 +16,6 @@ class CharactersContainer extends React.Component{
     render(){
         return(
             <div className={"CharactersContainer"}>
-                {console.log(this.props.characters)}
                 {this.renderCharacterCards()}
             </div>
         )
