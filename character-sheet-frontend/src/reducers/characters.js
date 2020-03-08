@@ -13,10 +13,14 @@ export function charactersReducer(state=[], action){
             var character = state.find(e => e.id === action.payload.character_id)
             return [...state, character.attacks.push(action.payload)]
         case ADD_EQUIPMENT:
-            var character = state.find(e => e.id === action.payload.character_id)
-            return [...state, character.equipment.push(action.payload)]
+            var newArray = []
+            var index = state.findIndex(e => e.id === action.payload.character_id)
+            var character = state[index]
+            character.equipment.push(action.payload)
+            newArray.push(character)
+            return newArray
         case DELETE_SPELL:
-            const newArray = []
+            var newArray = []
             var index = state.findIndex(e => e.id === action.payload.characterId)
             var character = state[index]
             character.spells = character.spells.filter(s => s.id !== action.payload.spellId)
