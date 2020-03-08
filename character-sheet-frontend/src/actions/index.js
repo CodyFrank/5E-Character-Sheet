@@ -1,7 +1,8 @@
 export {
      fetchCharacters, 
      fetchCharacter,
-     deleteCharacter 
+     deleteCharacter,
+     addCharacter 
 } from './characters.js'
 
 export {

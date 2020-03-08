@@ -1,4 +1,4 @@
-import { ADD_CHARACTER, DELETE_CHARACTER } from '../actionTypes'
+import { FETCH_CHARACTER, DELETE_CHARACTER, ADD_CHARACTER } from '../actionTypes'
 
 export const fetchCharacters = () => dispatch => {
     fetch('http://localhost:3000/api/v1/characters')
@@ -20,5 +20,17 @@ export const deleteCharacter = (id) => dispatch => {
         }
     }).then(res => res.json())
     .then(characterId => dispatch({ type: DELETE_CHARACTER, payload: characterId }))
+}
+
+export const addCharacter = (data) => dispatch => {
+    fetch('http://localhost:3000/api/v1/characters',{
+        method: 'POST', 
+        headers: {
+            'content-type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    })
+    .then(resp => resp.json())
+    .then(c => dispatch({ type: ADD_CHARACTER, payload: c}))
 }
 

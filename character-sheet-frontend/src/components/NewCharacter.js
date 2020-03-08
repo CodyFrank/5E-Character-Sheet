@@ -26,7 +26,7 @@ class NewCharacter extends React.Component {
 
       handleCharacterClassChange = e => {
         this.setState({
-          name: e.target.value
+          character_class: e.target.value
         })
       }
 
