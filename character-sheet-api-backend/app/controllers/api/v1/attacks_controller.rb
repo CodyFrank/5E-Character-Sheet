@@ -20,7 +20,10 @@ class Api::V1::AttacksController < ApplicationController
 
     def destroy
         if attack = Attack.find_by(id: params[:id]).destroy
-            render json: {attackId: attack.id}
+            render json: {
+                attackId: attack.id,
+                characterId: attack.character.id
+            }
         else
             render json: {message: "Cannot delete that attack"}
         end

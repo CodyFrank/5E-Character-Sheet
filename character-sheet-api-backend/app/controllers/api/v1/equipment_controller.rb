@@ -20,7 +20,10 @@ class Api::V1::EquipmentController < ApplicationController
 
     def destroy
         if equipment = Equipment.find_by(id: params[:id]).destroy
-            render json: {equipmentId: equipment.id}
+            render json: {
+                equipmentId: equipment.id,
+                CharacterId: equipment.character_id
+            }
         else
             render json: {message: "Cannot delete that equipment"}
         end

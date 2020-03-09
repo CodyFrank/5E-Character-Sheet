@@ -1,4 +1,11 @@
-import { ADD_CHARACTER, DELETE_CHARACTER, ADD_SPELL, ADD_ATTACK, ADD_EQUIPMENT, DELETE_SPELL } from '../actionTypes'
+import { ADD_CHARACTER,
+         DELETE_CHARACTER, 
+         ADD_SPELL, 
+         ADD_ATTACK, 
+         ADD_EQUIPMENT, 
+         DELETE_SPELL,
+         DELETE_ATTACK
+         } from '../actionTypes'
 
 export function charactersReducer(state=[], action){
     switch(action.type){
@@ -7,11 +14,19 @@ export function charactersReducer(state=[], action){
         case DELETE_CHARACTER:
             return state.filter(c => c.id !== action.payload.characterId )
         case ADD_SPELL:
-            var character = state.find(e => e.id === action.payload.character_id)
-            return [...state, character.spells.push(action.payload)]
+            var newArray = []
+            var index = state.findIndex(e => e.id === action.payload.character_id)
+            var character = state[index]
+            character.spells.push(action.payload)
+            newArray.push(character)
+            return newArray
         case ADD_ATTACK:
-            var character = state.find(e => e.id === action.payload.character_id)
-            return [...state, character.attacks.push(action.payload)]
+            var newArray = []
+            var index = state.findIndex(e => e.id === action.payload.character_id)
+            var character = state[index]
+            character.attacks.push(action.payload)
+            newArray.push(character)
+            return newArray
         case ADD_EQUIPMENT:
             var newArray = []
             var index = state.findIndex(e => e.id === action.payload.character_id)
@@ -24,6 +39,14 @@ export function charactersReducer(state=[], action){
             var index = state.findIndex(e => e.id === action.payload.characterId)
             var character = state[index]
             character.spells = character.spells.filter(s => s.id !== action.payload.spellId)
+            newArray.push(character)
+            return newArray
+        case DELETE_ATTACK:
+            console.log(action.payload)
+            var newArray = []
+            var index = state.findIndex(e => e.id === action.payload.characterId)
+            var character = state[index]
+            character.attacks = character.attacks.filter(s => s.id !== action.payload.attackId)
             newArray.push(character)
             return newArray
         default:

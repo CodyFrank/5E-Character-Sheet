@@ -11,7 +11,8 @@ export {
 } from './spells.js'
 
 export{
-     addAttack
+     addAttack,
+     deleteAttack
 } from './attacks.js'
 
 export {

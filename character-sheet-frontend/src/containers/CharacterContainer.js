@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { fetchCharacter, deleteCharacter, deleteSpell } from '../actions'
+import { fetchCharacter, deleteCharacter, deleteSpell, deleteAttack } from '../actions'
 import { withRouter, BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import CharacterStats from '../components/CharacterStats.js'
 import CharactersContainer from './CharactersContainer'
@@ -53,7 +53,13 @@ class CharacterContainer extends React.Component{
             const character = this.props.characters[0]
             const attacks = character.attacks
             if(attacks){
-                return attacks.map( a => <Attack key={`${character.id}${a.id}`} name={a.name} attack_bonus={a.attack_bonus} damage={a.damage} damage_type={a.damage_type}/>)
+                return attacks.map( a => {
+                    return <div key={`${character.id}${a.id}`}>
+                        <Attack key={`${a.id}`} name={a.name} attack_bonus={a.attack_bonus} damage={a.damage} damage_type={a.damage_type}/>
+                        <button onClick={(e) => this.deleteAttack(e, a.id)}>Delete Attack</button>
+                    </div>
+                    }
+                )
             }
         }
     }
@@ -77,6 +83,11 @@ class CharacterContainer extends React.Component{
     deleteSpell = (e, spellId) => {
         e.preventDefault()
         this.props.deleteSpell(spellId)
+    }
+
+    deleteAttack = (e, attackId) => {
+        e.preventDefault()
+        this.props.deleteAttack(attackId)
     }
 
    
@@ -112,7 +123,8 @@ const mapDispatchToProps = (dispatch) => {
     return { 
         fetchCharacter: (id) => dispatch(fetchCharacter(id)),
         deleteCharacter: (id) => dispatch(deleteCharacter(id)),
-        deleteSpell: (id) => dispatch(deleteSpell(id))
+        deleteSpell: (id) => dispatch(deleteSpell(id)),
+        deleteAttack: (id) => dispatch(deleteAttack(id))
      }
 }
 
