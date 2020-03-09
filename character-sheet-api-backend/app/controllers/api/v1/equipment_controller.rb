@@ -22,7 +22,7 @@ class Api::V1::EquipmentController < ApplicationController
         if equipment = Equipment.find_by(id: params[:id]).destroy
             render json: {
                 equipmentId: equipment.id,
-                CharacterId: equipment.character_id
+                characterId: equipment.character_id
             }
         else
             render json: {message: "Cannot delete that equipment"}

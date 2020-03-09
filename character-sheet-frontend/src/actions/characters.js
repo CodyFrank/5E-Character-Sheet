@@ -1,4 +1,4 @@
-import { FETCH_CHARACTER, DELETE_CHARACTER, ADD_CHARACTER } from '../actionTypes'
+import { DELETE_CHARACTER, ADD_CHARACTER } from '../actionTypes'
 
 export const fetchCharacters = () => dispatch => {
     fetch('http://localhost:3000/api/v1/characters')

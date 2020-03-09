@@ -4,7 +4,8 @@ import { ADD_CHARACTER,
          ADD_ATTACK, 
          ADD_EQUIPMENT, 
          DELETE_SPELL,
-         DELETE_ATTACK
+         DELETE_ATTACK,
+         DELETE_EQUIPMENT
          } from '../actionTypes'
 
 export function charactersReducer(state=[], action){
@@ -42,11 +43,17 @@ export function charactersReducer(state=[], action){
             newArray.push(character)
             return newArray
         case DELETE_ATTACK:
-            console.log(action.payload)
             var newArray = []
             var index = state.findIndex(e => e.id === action.payload.characterId)
             var character = state[index]
             character.attacks = character.attacks.filter(s => s.id !== action.payload.attackId)
+            newArray.push(character)
+            return newArray
+        case DELETE_EQUIPMENT:
+            var newArray = []
+            var index = state.findIndex(e => e.id === action.payload.characterId)
+            var character = state[index]
+            character.equipment = character.equipment.filter(s => s.id !== action.payload.equipmentId)
             newArray.push(character)
             return newArray
         default:

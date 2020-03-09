@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { fetchCharacter, deleteCharacter, deleteSpell, deleteAttack } from '../actions'
+import { fetchCharacter, deleteCharacter, deleteSpell, deleteAttack, deleteEquipment } from '../actions'
 import { withRouter, BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import CharacterStats from '../components/CharacterStats.js'
 import CharactersContainer from './CharactersContainer'
@@ -69,7 +69,13 @@ class CharacterContainer extends React.Component{
             const character = this.props.characters[0]
             const equipment = character.equipment
             if(equipment){
-                return equipment.map( e => <Equipment key={`${character.id}${e.id}`} name={e.name} description={e.description}/>)
+                return equipment.map( e => {
+                    return <div key={`${character.id}${e.id}`}>
+                      <Equipment key={`${character.id}${e.id}`} name={e.name} description={e.description}/>
+                      <button onClick={(event) => this.deleteEquipment(event, e.id)}>Delete Equipment</button>
+                    </div>
+                    }
+                )
             }
         }
     }
@@ -88,6 +94,11 @@ class CharacterContainer extends React.Component{
     deleteAttack = (e, attackId) => {
         e.preventDefault()
         this.props.deleteAttack(attackId)
+    }
+
+    deleteEquipment = (e, eId) => {
+        e.preventDefault()
+        this.props.deleteEquipment(eId)
     }
 
    
@@ -124,7 +135,8 @@ const mapDispatchToProps = (dispatch) => {
         fetchCharacter: (id) => dispatch(fetchCharacter(id)),
         deleteCharacter: (id) => dispatch(deleteCharacter(id)),
         deleteSpell: (id) => dispatch(deleteSpell(id)),
-        deleteAttack: (id) => dispatch(deleteAttack(id))
+        deleteAttack: (id) => dispatch(deleteAttack(id)),
+        deleteEquipment: (id) => dispatch(deleteEquipment(id))
      }
 }
 

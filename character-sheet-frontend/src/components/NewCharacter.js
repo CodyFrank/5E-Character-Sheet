@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { addCharacter } from '../actions'
 import { connect } from 'react-redux'
 

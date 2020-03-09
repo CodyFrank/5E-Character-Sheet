@@ -16,5 +16,6 @@ export{
 } from './attacks.js'
 
 export {
-     addEquipment
+     addEquipment,
+     deleteEquipment
 } from './equipment.js'
