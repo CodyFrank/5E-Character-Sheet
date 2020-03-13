@@ -22,6 +22,7 @@ class Api::V1::CharactersController < ApplicationController
     end
 
     def update
+        # binding.pry
         character = Character.find_by(id: params[:id])
         if character.update(character_params)
             render json: CharacterSerializer.new(character).to_serialized_json

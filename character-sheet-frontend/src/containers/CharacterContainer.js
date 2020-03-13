@@ -10,6 +10,7 @@ import Equipment from '../components/Equipment.js'
 import NewSpell from '../components/NewSpell'
 import NewAttack from '../components/NewAttack'
 import NewEquipment from '../components/NewEquipment'
+import { updateCharacter } from '../actions'
 
 
 
@@ -28,7 +29,7 @@ class CharacterContainer extends React.Component{
         if(this.props.characters.length > 0){
             const character = this.props.characters[0]
             const keys = Object.keys(character)
-            return keys.map(k => <CharacterStats key={`${character.id}${k}`} statName={k} statValue={character[k]} /> )
+            return keys.map(k => <CharacterStats key={`${character.id}${k}`} updateCallback={this.updateCharacter} statName={k} statValue={character[k]} /> )
         }
     }
 
@@ -101,6 +102,14 @@ class CharacterContainer extends React.Component{
         this.props.deleteEquipment(eId)
     }
 
+    updateCharacter = (data) => {
+        let character = this.props.characters[0]
+        const statName = data.statName
+        character[statName] = data[statName]
+        this.props.updateCharacter(character)
+    }
+
+
    
 
     render(){
@@ -136,7 +145,8 @@ const mapDispatchToProps = (dispatch) => {
         deleteCharacter: (id) => dispatch(deleteCharacter(id)),
         deleteSpell: (id) => dispatch(deleteSpell(id)),
         deleteAttack: (id) => dispatch(deleteAttack(id)),
-        deleteEquipment: (id) => dispatch(deleteEquipment(id))
+        deleteEquipment: (id) => dispatch(deleteEquipment(id)),
+        updateCharacter: (character, data) => dispatch(updateCharacter(character, data))
      }
 }
 

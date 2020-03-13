@@ -5,7 +5,8 @@ import { ADD_CHARACTER,
          ADD_EQUIPMENT, 
          DELETE_SPELL,
          DELETE_ATTACK,
-         DELETE_EQUIPMENT
+         DELETE_EQUIPMENT,
+         UPDATE_CHARACTER
          } from '../actionTypes'
 
 export function charactersReducer(state=[], action){
@@ -56,6 +57,8 @@ export function charactersReducer(state=[], action){
             character.equipment = character.equipment.filter(s => s.id !== action.payload.equipmentId)
             newArray.push(character)
             return newArray
+        case UPDATE_CHARACTER:
+            return [ action.payload ]
         default:
             return state
     }

@@ -1,4 +1,4 @@
-import { DELETE_CHARACTER, ADD_CHARACTER } from '../actionTypes'
+import { DELETE_CHARACTER, ADD_CHARACTER, UPDATE_CHARACTER } from '../actionTypes'
 
 export const fetchCharacters = () => dispatch => {
     fetch('http://localhost:3000/api/v1/characters')
@@ -34,3 +34,15 @@ export const addCharacter = (data) => dispatch => {
     .then(c => dispatch({ type: ADD_CHARACTER, payload: c}))
 }
 
+export const updateCharacter = (character) => dispatch => {
+    console.log(character)
+    fetch(`http://localhost:3000/api/v1/characters/${character.id}`,{
+        method: 'PATCH', 
+        headers: {
+            'content-type': 'application/json'
+        },
+        body: JSON.stringify(character)
+    })
+    .then(resp => resp.json()) 
+    .then(c => dispatch({ type: UPDATE_CHARACTER, payload: c}))
+}

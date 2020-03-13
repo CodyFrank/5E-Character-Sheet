@@ -11,3 +11,9 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.statInput {
+  width: 10%;
+  margin: auto;
+  padding: 50px
+}
