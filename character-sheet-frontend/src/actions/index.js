@@ -8,7 +8,8 @@ export {
 
 export {
          addSpell,
-         deleteSpell
+         deleteSpell, 
+         updateSpell
 } from './spells.js'
 
 export{

@@ -35,7 +35,6 @@ export const addCharacter = (data) => dispatch => {
 }
 
 export const updateCharacter = (character) => dispatch => {
-    console.log(character)
     fetch(`http://localhost:3000/api/v1/characters/${character.id}`,{
         method: 'PATCH', 
         headers: {

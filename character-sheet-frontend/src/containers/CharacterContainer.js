@@ -1,6 +1,14 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { fetchCharacter, deleteCharacter, deleteSpell, deleteAttack, deleteEquipment } from '../actions'
+import { 
+    fetchCharacter,
+     deleteCharacter,
+     deleteSpell,
+     deleteAttack,
+     deleteEquipment,
+     updateCharacter,
+     updateSpell
+ } from '../actions'
 import { withRouter, BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import CharacterStats from '../components/CharacterStats.js'
 import CharactersContainer from './CharactersContainer'
@@ -10,7 +18,6 @@ import Equipment from '../components/Equipment.js'
 import NewSpell from '../components/NewSpell'
 import NewAttack from '../components/NewAttack'
 import NewEquipment from '../components/NewEquipment'
-import { updateCharacter } from '../actions'
 
 
 
@@ -40,7 +47,7 @@ class CharacterContainer extends React.Component{
             if(spells){
                 return spells.map( s => {
                     return <div key={`${character.id}${s.id}`}>
-                      <Spell key={`${s.id}`} level={s.level} name={s.name} description={s.description}/>
+                      <Spell key={`${s.id}`} level={s.level} name={s.name} description={s.description} updateCallback={this.updateSpell}/>
                       <button onClick={(e) => this.deleteSpell(e, s.id)}>Delete Spell</button>
                     </div>
                 } 
@@ -109,6 +116,13 @@ class CharacterContainer extends React.Component{
         this.props.updateCharacter(character)
     }
 
+    updateSpell = (data) => {
+        let character = this.props.characters[0]
+        const statName = data.statName
+        character[statName] = data[statName]
+        this.props.updateCharacter(character)
+    }
+
 
    
 
@@ -146,7 +160,8 @@ const mapDispatchToProps = (dispatch) => {
         deleteSpell: (id) => dispatch(deleteSpell(id)),
         deleteAttack: (id) => dispatch(deleteAttack(id)),
         deleteEquipment: (id) => dispatch(deleteEquipment(id)),
-        updateCharacter: (character, data) => dispatch(updateCharacter(character, data))
+        updateCharacter: (character) => dispatch(updateCharacter(character)),
+        updateSpell: (character) => dispatch(updateSpell(character))
      }
 }
 
