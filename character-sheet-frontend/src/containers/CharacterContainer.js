@@ -47,7 +47,7 @@ class CharacterContainer extends React.Component{
             if(spells){
                 return spells.map( s => {
                     return <div key={`${character.id}${s.id}`}>
-                      <Spell key={`${s.id}`} level={s.level} name={s.name} description={s.description} updateCallback={this.updateSpell}/>
+                      <Spell key={`${s.id}`} id={s.id} level={s.level} name={s.name} description={s.description} updateCallback={this.updateSpell}/>
                       <button onClick={(e) => this.deleteSpell(e, s.id)}>Delete Spell</button>
                     </div>
                 } 
@@ -118,8 +118,9 @@ class CharacterContainer extends React.Component{
 
     updateSpell = (data) => {
         let character = this.props.characters[0]
-        character.spells[9] = {...character.spells[9], level: 2}
-        this.props.updateSpell(character.spells[9])
+        let spell = character.spells.find(s => s.id === data.id)
+        Object.assign(spell, data)
+        this.props.updateSpell(spell)
     }
 
 

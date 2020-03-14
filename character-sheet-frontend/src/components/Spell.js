@@ -6,7 +6,7 @@ export default class Spell extends React.Component{
         this.state = {
             name: this.props.name, 
             level: this.props.level, 
-            description: this.props.level, 
+            description: this.props.description, 
             clicked: false
         }
     }
@@ -33,13 +33,15 @@ export default class Spell extends React.Component{
 
       handleSave = (e) => {
           e.preventDefault()
-        const data = {}
-        data.statName = this.props.statName
-        const statName = this.props.statName
-        data[statName] = this.state.statValue
-        this.setState((state, props) => ({
-          clicked: false
-        }), console.log(data))
+          const data = {
+              name: this.state.name,
+              level: this.state.level,
+              description: this.state.description, 
+              id: this.props.id
+          }
+          this.setState((state, props) => ({
+            clicked: false
+          }), this.props.updateCallback(data))
       }
 
       makeEditable = (e) => {
