@@ -8,7 +8,18 @@ class AttackSerializer
         options = {
             include: {
                 character:{
-                    except: [:created_at, :updated_at]
+                    include: {
+                        attacks:{
+                            except: [:created_at, :updated_at]
+                        },
+                        equipment:{
+                            except: [:created_at, :updated_at]
+                        },
+                        spells:{
+                            except: [:created_at, :updated_at]
+                        },
+                    },
+                    except: [:created_at, :updated_at],
                 },
             },
             except: [:created_at, :updated_at],
