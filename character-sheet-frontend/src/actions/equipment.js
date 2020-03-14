@@ -25,7 +25,7 @@ export const deleteEquipment = (id) => dispatch => {
 }
 
 export const updateEquipment = (equipment) => dispatch => {
-    fetch(`http://localhost:3000/api/v1/spells/${equipment.id}`,{
+    fetch(`http://localhost:3000/api/v1/equipment/${equipment.id}`,{
         method: 'PATCH', 
         headers: {
             'content-type': 'application/json'
