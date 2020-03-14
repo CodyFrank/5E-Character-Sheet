@@ -65,7 +65,7 @@ class CharacterContainer extends React.Component{
             if(attacks){
                 return attacks.map( a => {
                     return <div key={`${character.id}${a.id}`}>
-                        <Attack key={`${a.id}`} name={a.name} attack_bonus={a.attack_bonus} damage={a.damage} damage_type={a.damage_type}/>
+                        <Attack key={`${a.id}`} id={a.id} name={a.name} attack_bonus={a.attack_bonus} damage={a.damage} damage_type={a.damage_type} updateCallback={this.updateAttack}/>
                         <button onClick={(e) => this.deleteAttack(e, a.id)}>Delete Attack</button>
                     </div>
                     }
@@ -123,6 +123,13 @@ class CharacterContainer extends React.Component{
         let spell = character.spells.find(s => s.id === data.id)
         Object.assign(spell, data)
         this.props.updateSpell(spell)
+    }
+
+    updateAttack = (data) => {
+        let character = this.props.characters[0]
+        let attack = character.attacks.find(a => a.id === data.id)
+        Object.assign(attack, data)
+        this.props.updateAttack(attack)
     }
 
 
