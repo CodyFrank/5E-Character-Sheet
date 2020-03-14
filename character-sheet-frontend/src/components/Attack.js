@@ -11,13 +11,34 @@ export default class Attack extends React.Component{
             clicked: false
         }
     }
-    render(){
-        return(
-            <div>
+
+    renderData = () => {
+        if (this.state.clicked) {
+          return <div>
+            <label>Name: </label>
+            <input onChange={this.handleNameChange} value={this.state.name}/>
+            <label>Level: </label>
+            <input onChange={this.handleLevelChange} value={this.state.level}/>
+            <label>Description: </label>
+            <textarea onChange={this.handleDescriptionChange} value={this.state.description}/>
+            <button onClick={this.handleSave}>Save Spell</button>
+          </div>
+        }else{
+            return <div onClick={e => this.makeEditable()}>
                 <p>name: {this.props.name}</p>
                 <p>attack bonus: {this.props.attack_bonus}</p>
                 <p>damage: {this.props.damage}</p>
                 <p>damage type: {this.props.damage_type}</p>
+            </div>
+        }
+      }
+
+
+
+    render(){
+        return(
+            <div>
+                  {this.renderData()}
             </div>
         )
     }
