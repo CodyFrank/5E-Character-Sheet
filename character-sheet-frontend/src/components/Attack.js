@@ -35,6 +35,44 @@ export default class Attack extends React.Component{
         }
       }
 
+      handleNameChange = (e) => {
+        this.setState({
+          name: e.target.value
+        })
+      }
+
+      handleAttackBonusChange = (e) => {
+        this.setState({
+          attack_bonus: e.target.value
+        })
+      }
+
+      handleDamageChange = (e) => {
+        this.setState({
+          damage: e.target.value
+        })
+      }
+
+      handleDamageTypeChange = (e) => {
+        this.setState({
+          damage_type: e.target.value
+        })
+      }
+
+      handleSave = (e) => {
+        e.preventDefault()
+        const data = {
+            name: this.state.name,
+            attack_bonus: this.state.attack_bonus,
+            damage: this.state.damage, 
+            damage_type: this.state.damage_type, 
+            id: this.props.id
+        }
+        this.setState((state, props) => ({
+          clicked: false
+        }), this.props.updateCallback(data))
+    }
+
       makeEditable = (e) => {
         this.setState({
           clicked: true
