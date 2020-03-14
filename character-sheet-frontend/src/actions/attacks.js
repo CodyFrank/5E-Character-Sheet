@@ -25,7 +25,7 @@ export const deleteAttack = (id) => dispatch => {
 }
 
 export const updateAttack = (attack) => dispatch => {
-    fetch(`http://localhost:3000/api/v1/attack/${attack.id}`,{
+    fetch(`http://localhost:3000/api/v1/attacks/${attack.id}`,{
         method: 'PATCH', 
         headers: {
             'content-type': 'application/json'
