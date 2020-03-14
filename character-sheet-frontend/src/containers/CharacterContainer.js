@@ -7,7 +7,9 @@ import {
      deleteAttack,
      deleteEquipment,
      updateCharacter,
-     updateSpell
+     updateSpell, 
+     updateAttack, 
+     updateEquipment
  } from '../actions'
 import { withRouter, BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import CharacterStats from '../components/CharacterStats.js'
@@ -161,7 +163,9 @@ const mapDispatchToProps = (dispatch) => {
         deleteAttack: (id) => dispatch(deleteAttack(id)),
         deleteEquipment: (id) => dispatch(deleteEquipment(id)),
         updateCharacter: (character) => dispatch(updateCharacter(character)),
-        updateSpell: (spell) => dispatch(updateSpell(spell))
+        updateSpell: (spell) => dispatch(updateSpell(spell)),
+        updateAttack: (attack) => dispatch(updateAttack(attack)),
+        updateEquipment: (equipment) => dispatch(updateEquipment(equipment)),
      }
 }
 

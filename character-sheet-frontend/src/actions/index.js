@@ -14,10 +14,12 @@ export {
 
 export{
      addAttack,
-     deleteAttack
+     deleteAttack, 
+     updateAttack
 } from './attacks.js'
 
 export {
      addEquipment,
-     deleteEquipment
+     deleteEquipment, 
+     updateEquipment
 } from './equipment.js'

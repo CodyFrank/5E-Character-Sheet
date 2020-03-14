@@ -1,4 +1,4 @@
-import { ADD_EQUIPMENT, DELETE_EQUIPMENT } from '../actionTypes'
+import { ADD_EQUIPMENT, DELETE_EQUIPMENT, UPDATE_CHARACTER } from '../actionTypes'
 
 export const addEquipment = (data) => dispatch => {
     fetch('http://localhost:3000/api/v1/equipment',{
@@ -22,4 +22,16 @@ export const deleteEquipment = (id) => dispatch => {
     })
     .then(resp => resp.json())
     .then(equipment => dispatch({ type: DELETE_EQUIPMENT, payload: equipment}))
+}
+
+export const updateEquipment = (equipment) => dispatch => {
+    fetch(`http://localhost:3000/api/v1/spells/${equipment.id}`,{
+        method: 'PATCH', 
+        headers: {
+            'content-type': 'application/json'
+        },
+        body: JSON.stringify(equipment)
+    })
+    .then(resp => resp.json()) 
+    .then(e => dispatch({ type: UPDATE_CHARACTER, payload: e.character}))
 }
