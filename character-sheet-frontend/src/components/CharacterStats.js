@@ -5,7 +5,7 @@ import React from 'react'
 class CharacterStats extends React.Component{
   constructor(props){
     super(props)
-    this.state={
+    this.state = {
       statValue: this.props.statValue,
       clicked: false
     }
@@ -29,10 +29,10 @@ class CharacterStats extends React.Component{
 
     renderData = () => {
       if (this.state.clicked) {
-        return <>
+        return <div onBlur={this.handleBlur}>
           <label>{this.props.statName}</label>
           <input className={"statInput"} onBlur={this.handleBlur} onChange={this.handleStatChange} value={this.state.statValue}/>
-        </>
+        </div>
       }else{
         return this.renderStats()
       }

@@ -1,12 +1,77 @@
 import React from 'react'
 
 export default class Spell extends React.Component{
+    constructor(props){
+        super(props)
+        this.state = {
+            name: this.props.name, 
+            level: this.props.level, 
+            description: this.props.level, 
+            clicked: false
+        }
+    }
+
+    renderData = () => {
+        if (this.state.clicked) {
+          return <div>
+            <label>Name: </label>
+            <input onChange={this.handleNameChange} value={this.state.name}/>
+            <label>Level: </label>
+            <input onChange={this.handleLevelChange} value={this.state.level}/>
+            <label>Description: </label>
+            <textarea onChange={this.handleDescriptionChange} value={this.state.description}/>
+            <button onClick={this.handleSave}>Save Spell</button>
+          </div>
+        }else{
+           return <div onClick={e => this.makeEditable()} >
+              <p>Name: {this.props.name}</p>
+              <p>Level: {this.props.level}</p>
+              <p>Description: {this.props.description}</p>
+            </div>
+        }
+      }
+
+      handleSave = (e) => {
+          e.preventDefault()
+        const data = {}
+        data.statName = this.props.statName
+        const statName = this.props.statName
+        data[statName] = this.state.statValue
+        this.setState((state, props) => ({
+          clicked: false
+        }), console.log(data))
+      }
+
+      makeEditable = (e) => {
+        this.setState({
+          clicked: true
+        })
+      }
+
+      handleNameChange = (e) => {
+        this.setState({
+          name: e.target.value
+        })
+      }
+
+      handleLevelChange = (e) => {
+        this.setState({
+          level: e.target.value
+        })
+      }
+
+      handleDescriptionChange = (e) => {
+        this.setState({
+          description: e.target.value
+        })
+      }
+  
+
+
     render(){
         return(
             <div>
-                <p onClick={this.props.updateCallback}> name: {this.props.name}</p>
-                <p>level: {this.props.level}</p>
-                <p>description: {this.props.description}</p>
+                {this.renderData()}
             </div>
         )
     }
