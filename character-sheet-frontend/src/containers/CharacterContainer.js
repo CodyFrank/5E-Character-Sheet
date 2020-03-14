@@ -118,9 +118,8 @@ class CharacterContainer extends React.Component{
 
     updateSpell = (data) => {
         let character = this.props.characters[0]
-        const statName = data.statName
-        character[statName] = data[statName]
-        this.props.updateCharacter(character)
+        character.spells[9] = {...character.spells[9], level: 2}
+        this.props.updateSpell(character.spells[9])
     }
 
 
@@ -161,7 +160,7 @@ const mapDispatchToProps = (dispatch) => {
         deleteAttack: (id) => dispatch(deleteAttack(id)),
         deleteEquipment: (id) => dispatch(deleteEquipment(id)),
         updateCharacter: (character) => dispatch(updateCharacter(character)),
-        updateSpell: (character) => dispatch(updateSpell(character))
+        updateSpell: (spell) => dispatch(updateSpell(spell))
      }
 }
 

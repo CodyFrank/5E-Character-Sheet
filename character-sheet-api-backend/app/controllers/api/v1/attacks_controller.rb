@@ -11,7 +11,7 @@ class Api::V1::AttacksController < ApplicationController
 
     def update
         attack = Attack.find_by(id: params[:id])
-        if Attack.update(attack_params)
+        if attack.update(attack_params)
             render json: AttackSerializer.new(attack).to_serialized_json
         else
             render json: {message: "Cannot update that Attack"}

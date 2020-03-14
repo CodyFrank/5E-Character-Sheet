@@ -1,4 +1,4 @@
-import { ADD_SPELL, DELETE_SPELL, UPDATE_SPELL } from '../actionTypes'
+import { ADD_SPELL, DELETE_SPELL, UPDATE_CHARACTER } from '../actionTypes'
 
 export const addSpell = (data) => dispatch => {
     fetch('http://localhost:3000/api/v1/spells',{
@@ -24,14 +24,14 @@ export const deleteSpell = (id) => dispatch => {
     .then(spell => dispatch({ type: DELETE_SPELL, payload: spell}))
 }
 
-export const updateSpell = (character) => dispatch => {
-    fetch(`http://localhost:3000/api/v1/characters/${character.id}`,{
+export const updateSpell = (spell) => dispatch => {
+    fetch(`http://localhost:3000/api/v1/spells/${spell.id}`,{
         method: 'PATCH', 
         headers: {
             'content-type': 'application/json'
         },
-        body: JSON.stringify(character)
+        body: JSON.stringify(spell)
     })
     .then(resp => resp.json()) 
-    .then(c => dispatch({ type: UPDATE_SPELL, payload: c}))
+    .then(s => dispatch({ type: UPDATE_CHARACTER, payload: s.character}))
 }

@@ -11,7 +11,7 @@ class Api::V1::EquipmentController < ApplicationController
 
     def update
         equipment = Equipment.find_by(id: params[:id])
-        if Equipment.update(equipment_params)
+        if equipment.update(equipment_params)
             render json: EquipmentSerializer.new(equipment).to_serialized_json
         else
             render json: {message: "Cannot update that Equipment"}

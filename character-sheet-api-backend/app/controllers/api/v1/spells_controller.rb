@@ -11,7 +11,7 @@ class Api::V1::SpellsController < ApplicationController
 
     def update
         spell = Spell.find_by(id: params[:id])
-        if Spell.update(spell_params)
+        if spell.update(spell_params)
             render json: SpellSerializer.new(spell).to_serialized_json
         else
             render json: {message: "Cannot update that Spell"}
