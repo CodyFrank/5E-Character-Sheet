@@ -81,7 +81,7 @@ class CharacterContainer extends React.Component{
             if(equipment){
                 return equipment.map( e => {
                     return <div key={`${character.id}${e.id}`}>
-                      <Equipment key={`${character.id}${e.id}`} name={e.name} description={e.description}/>
+                      <Equipment key={`${character.id}${e.id}`} id={e.id} name={e.name} description={e.description} updateCallback={this.updateEquipment}/>
                       <button onClick={(event) => this.deleteEquipment(event, e.id)}>Delete Equipment</button>
                     </div>
                     }
@@ -130,6 +130,13 @@ class CharacterContainer extends React.Component{
         let attack = character.attacks.find(a => a.id === data.id)
         Object.assign(attack, data)
         this.props.updateAttack(attack)
+    }
+
+    updateEquipment = (data) => {
+        let character = this.props.characters[0]
+        let equipment = character.equipment.find(e => e.id === data.id)
+        Object.assign(equipment, data)
+        this.props.updateEquipment(equipment)
     }
 
 
