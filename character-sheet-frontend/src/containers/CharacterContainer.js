@@ -13,7 +13,6 @@ import {
  } from '../actions'
 import { withRouter, Link } from 'react-router-dom'
 import CharacterStats from '../components/CharacterStats.js'
-import CharactersContainer from './CharactersContainer'
 import Spell from '../components/Spell.js'
 import Attack from '../components/Attack.js'
 import Equipment from '../components/Equipment.js'
