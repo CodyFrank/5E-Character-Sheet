@@ -7,6 +7,7 @@ import {
  } from 'react-router-dom'
  import CharactersContainer from './containers/CharactersContainer'
  import CharacterContainer from './containers/CharacterContainer'
+ import Home from './components/Home'
 
 
 
@@ -28,7 +29,7 @@ function App() {
           </Route>
 
           <Route path="/">
-            <CharactersContainer/>
+            <Home/>
           </Route>
 
         
