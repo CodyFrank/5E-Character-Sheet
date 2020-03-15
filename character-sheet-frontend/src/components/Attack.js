@@ -1,4 +1,5 @@
 import React from 'react'
+import AttackInfo from './AttackInfo'
 
 export default class Attack extends React.Component{
     constructor(props){
@@ -27,10 +28,7 @@ export default class Attack extends React.Component{
           </div>
         }else{
             return <div onClick={e => this.makeEditable()}>
-                <p>Name: {this.props.name || ""}</p>
-                <p>Attack bonus: {this.props.attack_bonus || ""}</p>
-                <p>Damage: {this.props.damage || ""}</p>
-                <p>Damage type: {this.props.damage_type || ""}</p>
+                <AttackInfo name={this.props.name} attack_bonus={this.props.attack_bonus} damage={this.props.damage} damage_type={this.props.damage_type} />
             </div>
         }
       }
