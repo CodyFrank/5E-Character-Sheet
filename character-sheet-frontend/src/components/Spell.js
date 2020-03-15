@@ -1,4 +1,5 @@
 import React from 'react'
+import SpellInfo from './SpellInfo'
 
 export default class Spell extends React.Component{
     constructor(props){
@@ -24,9 +25,7 @@ export default class Spell extends React.Component{
           </div>
         }else{
            return <div onClick={e => this.makeEditable()} >
-              <p>Name: {this.props.name || ""}</p>
-              <p>Level: {this.props.level || ""}</p>
-              <p>Description: {this.props.description || ""}</p>
+             <SpellInfo name={this.props.name} level={this.props.level} description={this.props.description}/>
             </div>
         }
       }
