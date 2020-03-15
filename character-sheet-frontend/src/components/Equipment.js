@@ -1,4 +1,5 @@
 import React from 'react'
+import EquipmentInfo from './EquipmentInfo'
 
 export default class Equipment extends React.Component{
     constructor(props){
@@ -21,8 +22,7 @@ export default class Equipment extends React.Component{
           </div>
         }else{
            return <div onClick={e => this.makeEditable()} >
-               <p>name: {this.props.name}</p>
-               <p>description: {this.props.description || ""}</p>
+               <EquipmentInfo name={this.props.name} description={this.props.description} />
             </div>
         }
       }
