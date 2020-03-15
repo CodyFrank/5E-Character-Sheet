@@ -19,7 +19,8 @@ export function charactersReducer(state=[], action){
             if(state.some(e => e.id === action.payload.id)){
                 return state
             }else{
-                return [ ...state, action.payload ]
+                newArray = [ ...state, action.payload ]
+                return newArray.sort((a, b) => a.id - b.id)
             }
         case ADD_CHARACTER:
             return [action.payload]
