@@ -11,7 +11,7 @@ import {
      updateAttack, 
      updateEquipment
  } from '../actions'
-import { withRouter, BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import { withRouter, Link } from 'react-router-dom'
 import CharacterStats from '../components/CharacterStats.js'
 import CharactersContainer from './CharactersContainer'
 import Spell from '../components/Spell.js'
@@ -144,8 +144,8 @@ class CharacterContainer extends React.Component{
 
     render(){
         return(
-            <Router>
                 <div className={'CharacterContainer'}>
+                    <Link to="/characters">All Characters</Link>
                     {this.renderCharacterStats()}
                     {this.renderCharacterSpells()}
                     <NewSpell characterId={this.id} />
@@ -156,14 +156,6 @@ class CharacterContainer extends React.Component{
                     <button onClick={(e) => this.deleteCharacter(e)}>Delete Character</button>
                     
                 </div>
-
-
-                <Switch>
-                    <Route exact path="/characters">
-                        <CharactersContainer />
-                    </Route> 
-                </Switch>
-            </Router>
         )
     }
 

@@ -17,3 +17,10 @@ code {
   margin: auto;
   padding: 50px
 }
+
+.characterCard {
+  border: 1px solid;
+  width: 30%;
+  margin: auto;
+  padding: 50px
+}

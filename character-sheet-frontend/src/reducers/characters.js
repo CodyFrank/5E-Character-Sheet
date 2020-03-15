@@ -12,7 +12,11 @@ import { ADD_CHARACTER,
 export function charactersReducer(state=[], action){
     switch(action.type){
         case ADD_CHARACTER:
-            return [ ...state, action.payload ]
+            if(state.some(e => e.id === action.payload.id)){
+                return state
+            }else{
+                return [ ...state, action.payload ]
+            }
         case DELETE_CHARACTER:
             return state.filter(c => c.id !== action.payload.characterId )
         case ADD_SPELL:
