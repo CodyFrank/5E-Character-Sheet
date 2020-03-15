@@ -3,13 +3,16 @@ Welcome all users interested in improving js-project-100-days-of-code and thank 
 
 ## Getting Started
 1. To use this application fork and clone the repo from Github
-2. Run bundle install
-3. Run migrations (rake db:migrate)
-4. Seed the database (rake db:seed)
-5. Start a backend server with rails (rails server or rails s)
-6. Start a frontend server with yarn (yarn start)
-7. yarn will open the project in your browser
-8. Have fun and love learning coding
+2. change directory into character-sheet-api-backend (cd character-sheet-api-backend)
+3. Run bundle install 
+4. Run migrations (rake db:migrate)
+5. Seed the database (rake db:seed)
+6. Start a backend server with rails (rails server or rails s)
+7. open new terminal (+ button on terminal in VSCode)
+8. change directory into character-sheet-frontend (cd character-sheet-frontend)
+9. Start a frontend server with yarn (yarn start)
+10. yarn will open the project in your browser
+11. Have fun and love learning coding
 
 
 ## Community
