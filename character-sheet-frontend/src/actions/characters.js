@@ -31,7 +31,7 @@ export const addCharacter = (data) => dispatch => {
         body: JSON.stringify(data)
     })
     .then(resp => resp.json())
-    .then(c => dispatch({ type: ADD_CHARACTER, payload: c}))
+    .then(c => dispatch({ type: ADD_CHARACTERS, payload: c}))
 }
 
 export const updateCharacter = (character) => dispatch => {

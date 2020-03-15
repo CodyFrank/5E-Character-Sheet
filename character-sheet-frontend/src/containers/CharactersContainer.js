@@ -15,11 +15,6 @@ class CharactersContainer extends React.Component{
         return this.props.characters.map(c => <Link key={c.id} to={`/characters/${c.id}`}><CharacterCard key={c.id} character={c} /></Link>)
     }
 
-    createCharacter = (e) => {
-        e.preventDefault()
-        this.props.createCharacter()
-    }
-
     render(){
         return(
             <div className={"CharactersContainer"}>
