@@ -31,7 +31,7 @@ class CharacterStats extends React.Component{
       if (this.state.clicked) {
         return <div onBlur={this.handleBlur}>
           <label>{this.props.statName}</label>
-          <input className={"statInput"} onBlur={this.handleBlur} onChange={this.handleStatChange} value={this.state.statValue}/>
+          <input className={"statInput"} onChange={this.handleStatChange} value={this.state.statValue}/>
         </div>
       }else{
         return this.renderStats()

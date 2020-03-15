@@ -6,17 +6,20 @@ import { ADD_CHARACTER,
          DELETE_SPELL,
          DELETE_ATTACK,
          DELETE_EQUIPMENT,
-         UPDATE_CHARACTER
+         UPDATE_CHARACTER,
+         ADD_CHARACTERS
          } from '../actionTypes'
 
 export function charactersReducer(state=[], action){
     switch(action.type){
-        case ADD_CHARACTER:
+        case ADD_CHARACTERS:
             if(state.some(e => e.id === action.payload.id)){
                 return state
             }else{
                 return [ ...state, action.payload ]
             }
+        case ADD_CHARACTER:
+            return [action.payload]
         case DELETE_CHARACTER:
             return state.filter(c => c.id !== action.payload.characterId )
         case ADD_SPELL:

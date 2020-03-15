@@ -175,8 +175,8 @@ const mapDispatchToProps = (dispatch) => {
      }
 }
 
-const mapStateToProps = ({ characters }) => ({
-    characters: characters
+const mapStateToProps = (state) => ({
+    characters: state.characters
 })
 
 const connected = connect(mapStateToProps, mapDispatchToProps)(CharacterContainer)

@@ -1,9 +1,9 @@
-import { DELETE_CHARACTER, ADD_CHARACTER, UPDATE_CHARACTER } from '../actionTypes'
+import { DELETE_CHARACTER, ADD_CHARACTER, UPDATE_CHARACTER, ADD_CHARACTERS } from '../actionTypes'
 
 export const fetchCharacters = () => dispatch => {
     fetch('http://localhost:3000/api/v1/characters')
     .then(resp => resp.json())
-    .then(characters => characters.map( c => dispatch({ type: ADD_CHARACTER, payload: c})))
+    .then(characters => characters.map( c => dispatch({ type: ADD_CHARACTERS, payload: c})))
 }
 
 export const fetchCharacter = (id) => dispatch => {
@@ -35,6 +35,7 @@ export const addCharacter = (data) => dispatch => {
 }
 
 export const updateCharacter = (character) => dispatch => {
+    console.log("updating")
     fetch(`http://localhost:3000/api/v1/characters/${character.id}`,{
         method: 'PATCH', 
         headers: {
