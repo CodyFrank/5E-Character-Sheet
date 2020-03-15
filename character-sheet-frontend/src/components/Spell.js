@@ -15,18 +15,18 @@ export default class Spell extends React.Component{
         if (this.state.clicked) {
           return <div>
             <label>Name: </label>
-            <input onChange={this.handleNameChange} value={this.state.name}/>
+            <input onChange={this.handleNameChange} value={this.state.name || ""}/>
             <label>Level: </label>
-            <input onChange={this.handleLevelChange} value={this.state.level}/>
+            <input onChange={this.handleLevelChange} value={this.state.level || ""}/>
             <label>Description: </label>
-            <textarea onChange={this.handleDescriptionChange} value={this.state.description}/>
+            <textarea onChange={this.handleDescriptionChange} value={this.state.description || ""}/>
             <button onClick={this.handleSave}>Save Spell</button>
           </div>
         }else{
            return <div onClick={e => this.makeEditable()} >
-              <p>Name: {this.props.name}</p>
-              <p>Level: {this.props.level}</p>
-              <p>Description: {this.props.description}</p>
+              <p>Name: {this.props.name || ""}</p>
+              <p>Level: {this.props.level || ""}</p>
+              <p>Description: {this.props.description || ""}</p>
             </div>
         }
       }

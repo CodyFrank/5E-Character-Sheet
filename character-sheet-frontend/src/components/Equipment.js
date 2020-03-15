@@ -16,13 +16,13 @@ export default class Equipment extends React.Component{
             <label>Name: </label>
             <input onChange={this.handleNameChange} value={this.state.name}/>
             <label>Description: </label>
-            <textarea onChange={this.handleDescriptionChange} value={this.state.description}/>
+            <textarea onChange={this.handleDescriptionChange} value={this.state.description || ""}/>
             <button onClick={this.handleSave}>Save Equipment</button>
           </div>
         }else{
            return <div onClick={e => this.makeEditable()} >
                <p>name: {this.props.name}</p>
-               <p>description: {this.props.description}</p>
+               <p>description: {this.props.description || ""}</p>
             </div>
         }
       }

@@ -22,7 +22,7 @@ class CharacterStats extends React.Component{
             case "spells":
               return
             default:
-              return <p onClick={e => this.makeEditable()}>{`${this.props.statName}: ${this.props.statValue}`}</p>
+              return <p onClick={e => this.makeEditable()}>{`${this.props.statName}: ${this.props.statValue || ""}`}</p>
         }
 
     }
@@ -31,7 +31,7 @@ class CharacterStats extends React.Component{
       if (this.state.clicked) {
         return <div onBlur={this.handleBlur}>
           <label>{this.props.statName}</label>
-          <input className={"statInput"} onChange={this.handleStatChange} value={this.state.statValue}/>
+          <input className={"statInput"} onChange={this.handleStatChange} value={this.state.statValue || ""}/>
         </div>
       }else{
         return this.renderStats()
